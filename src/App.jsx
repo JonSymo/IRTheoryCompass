@@ -150,10 +150,10 @@ const QUESTIONS = [
     instruction: 'Select one',
     text: 'In order to build a model of how the world functions is it useful to think of states as rational, unitary actors pursuing their national interests?',
     options: [
-      'Yes, states are generally trying to pursue their national interest',
-      'No, internal groups (bureaucracies, interest groups, parties) compete to define policy',
-      'State behavior is shaped by external structures (global capitalism, international norms, institutions)',
-      'No, domestic political coalitions and interest groups shape foreign policy more than any coherent "national interest"',
+      'Yes, modeling states as rational unitary actors is a useful simplification',
+      'No, bureaucracies and organisations within states pursue their own interests, not a unified national interest',
+      'No, domestic political coalitions shape foreign policy - there\'s no single \'national interest\'',
+      'No, other economic and social structures - including capitalism, class relations, and patriarchy - determine state behaviour',
     ],
   },
   {
@@ -445,7 +445,7 @@ const TAG_DEFINITIONS = {
     rules: [
       { q: 'Q4', type: 'forced_in', match: [1, 4], pts: 2 },
       { q: 'Q7', type: 'forced_eq', match: 2, pts: 2 },
-      { q: 'Q11', type: 'forced_eq', match: 2, pts: 1 },
+      { q: 'Q11', type: 'forced_eq', match: 3, pts: 1 }, // capitalism/class/patriarchy structures
       { q: 'Q14', type: 'rank_top2', match: 2, pts: 1 },
       { q: 'Q5', type: 'rank_top2', match: 3, pts: 1 },
       { q: 'Q1', type: 'rank_includes', match: 2, pts: 1 },
@@ -481,11 +481,12 @@ const TAG_DEFINITIONS = {
   },
   feministIR: {
     label: 'Feminist IR',
-    max: 6,
+    max: 7,
     rules: [
       { q: 'Q12', type: 'forced_eq', match: 1, pts: 2 },
       { q: 'Q13', type: 'forced_in', match: [1, 2], pts: 2 },
       { q: 'Q17', type: 'forced_eq', match: 2, pts: 2 }, // ecofeminist position
+      { q: 'Q11', type: 'forced_eq', match: 3, pts: 1 }, // mentions patriarchy
     ],
   },
   indigenousPostcolonial: {
@@ -773,7 +774,7 @@ function calculateTheoryAffinities(answers, axes, subDiag, tags) {
     if (a.Q18 === 1 || a.Q18 === 4) pct += 10; // Q18=B or E (sovereignty)
     if (a.Q20 === 0 || a.Q20 === 2) pct += 10; // Q20=A or C (global justice)
     if (a.Q15 === 0) pct += 10; // cosmopolitan
-    if (a.Q11 === 3) pct += 5; // domestic pluralism
+    if (a.Q11 === 2) pct += 5; // domestic coalitions
     if (a.Q4 === 0) pct += 5; // states lens
     if (a.Q19 === 1) pct += 5; // states productive (nation-states)
     if (Array.isArray(a.Q14) && a.Q14[0] === 6) pct += 5; // Q14 option G ranked first (order through institutions)
@@ -788,7 +789,7 @@ function calculateTheoryAffinities(answers, axes, subDiag, tags) {
     if (a.Q6 != null && a.Q6 >= 4) pct += 15; // norms shape behavior
     if (a.Q3 === 1 || a.Q3 === 2) pct += 10; // power or perspectives
     if (Array.isArray(a.Q9) && a.Q9.includes(3)) pct += 15; // Q9 ranks D
-    if (a.Q11 === 2) pct += 5; // external structures (norms)
+    if (a.Q11 === 3) pct += 5; // social structures (capitalism/class/patriarchy — constructivists see these as social constructs)
     if (a.Q8 != null && (a.Q8 === 2 || a.Q8 === 3)) pct += 5; // moderate epistemology
     if (Array.isArray(a.Q10) && a.Q10.includes(2)) pct += 10; // Q10 ranks C (norms)
     // Constructivists favor reform to moderate transform
@@ -825,6 +826,7 @@ function calculateTheoryAffinities(answers, axes, subDiag, tags) {
     if (Array.isArray(a.Q5) && a.Q5.includes(3)) pct += 10; // Q5 ranks D
     if (a.Q7 === 2) pct += 10; // global capital
     if (a.Q20 === 3) pct += 10; // dismantle capitalism (global justice)
+    if (a.Q11 === 3) pct += 10; // capitalism/class structures determine state behaviour
     results.marxismWorldSystems = { label: 'Marxism / World Systems', percent: clamp(Math.round(pct), 0, 100) };
   }
 
@@ -836,6 +838,7 @@ function calculateTheoryAffinities(answers, axes, subDiag, tags) {
     pct += normalizeDiag(subDiag.epistemology, 'high') * 10;
     if (a.Q12 === 1) pct += 15; // masculinist assumptions
     if (a.Q13 === 1 || a.Q13 === 2) pct += 10; // structural or intersectional
+    if (a.Q11 === 3) pct += 5; // structures including patriarchy
     results.feminism = { label: 'Feminism', percent: clamp(Math.round(pct), 0, 100) };
   }
 
