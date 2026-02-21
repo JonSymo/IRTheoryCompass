@@ -27,7 +27,7 @@ const QUESTIONS = [
     text: 'Whose knowledge should theories of international relations primarily draw on?',
     options: [
       'State officials and diplomats',
-      'Rigorous scientific modeling of state behavior and strategic interaction',
+      'Rigorous scientific modelling of state behaviour and strategic interaction',
       'Marginalized communities whose experiences reveal how power operates (First Nations peoples, stateless peoples, trafficked women, etc.)',
     ],
   },
@@ -83,7 +83,7 @@ const QUESTIONS = [
     schemaColor: '#2E6B9E',
     type: 'likert',
     instruction: 'Rate your agreement',
-    text: 'International norms shape behavior',
+    text: 'International norms shape behaviour',
     detail:
       'Governments often act in line with widely accepted rules about legitimacy — for example, which weapons are acceptable to use in conflict, whether borders should be respected, or how to treat prisoners of war.',
   },
@@ -122,8 +122,9 @@ const QUESTIONS = [
       'Shifts in military or economic power create insecurity and fear in rivals',
       'Decisions and personalities of leaders',
       'Misperceptions and miscommunication',
-      'Conflicting national identities and conceptions of honor or prestige',
+      'Conflicting national identities and conceptions of honour or prestige',
       'Competition for markets and resources driven by economic structures',
+      'Human nature - fear and the will for power drive conflict',
     ],
   },
   {
@@ -137,7 +138,7 @@ const QUESTIONS = [
     options: [
       'Security threats',
       'Economic interests',
-      'International norms about appropriate behavior',
+      'International norms about appropriate behaviour',
       'Domestic political pressures',
       'Personal beliefs and values of leaders',
     ],
@@ -150,7 +151,7 @@ const QUESTIONS = [
     instruction: 'Select one',
     text: 'In order to build a model of how the world functions is it useful to think of states as rational, unitary actors pursuing their national interests?',
     options: [
-      'Yes, modeling states as rational unitary actors is a useful simplification',
+      'Yes, modelling states as rational unitary actors is a useful simplification',
       'No, bureaucracies and organisations within states pursue their own interests, not a unified national interest',
       'No, domestic political coalitions shape foreign policy - there\'s no single \'national interest\'',
       'No, other economic and social structures - including capitalism, class relations, and patriarchy - determine state behaviour',
@@ -169,7 +170,7 @@ const QUESTIONS = [
       'Patriarchal assumptions about what counts as "security" structure world politics',
       'Foreign policy is dominated by corporate interests who benefit from militarisation',
       'The territorial state system defines states as defence units, not welfare providers',
-      'The premise is wrong — most states do prioritize human security and development',
+      'The premise is wrong — most states do prioritise human security and development',
     ],
   },
   {
@@ -209,21 +210,6 @@ const QUESTIONS = [
     id: 'Q15',
     schema: 'Schema 2',
     schemaColor: '#2E7D4F',
-    type: 'forced',
-    instruction: 'Select one',
-    text: 'Policy tradeoff scenario',
-    detail:
-      'A new trade policy would greatly improve living standards in Country A but slightly reduce them in Country B. The total benefit to humanity is positive. Should Country B support it?',
-    options: [
-      'Yes — total human welfare matters most',
-      "No — each government's primary duty is to its own citizens",
-      'Depends on whether Country B historically exploited Country A',
-    ],
-  },
-  {
-    id: 'Q16',
-    schema: 'Schema 2',
-    schemaColor: '#2E7D4F',
     type: 'likert',
     instruction: 'Rate your agreement',
     text: 'Development programs and colonial legacies',
@@ -231,7 +217,7 @@ const QUESTIONS = [
       'Even well-intentioned international development programs often reinforce colonial power relationships.',
   },
   {
-    id: 'Q17',
+    id: 'Q16',
     schema: 'Schema 2',
     schemaColor: '#2E7D4F',
     type: 'forced',
@@ -246,12 +232,12 @@ const QUESTIONS = [
     ],
   },
   {
-    id: 'Q18',
+    id: 'Q17',
     schema: 'Schema 2',
     schemaColor: '#2E7D4F',
     type: 'forced',
     instruction: 'Select one',
-    text: 'A government is violently suppressing protests. International observers document human rights abuses. What should the international community do?',
+    text: 'A government is violently suppressing protests. International observers document thousands of deaths and widespread human rights abuses. What should the international community do?',
     options: [
       'Respect sovereignty — intervention would set a dangerous precedent and likely make things worse',
       'Impose sanctions and diplomatic pressure while respecting sovereignty',
@@ -262,21 +248,21 @@ const QUESTIONS = [
     ],
   },
   {
-    id: 'Q19',
+    id: 'Q18',
     schema: 'Schema 2',
     schemaColor: '#2E7D4F',
     type: 'forced',
     instruction: 'Select one',
     text: 'The system of territorial nation-states:',
     options: [
-      'Was an inevitable outcome of social evolution',
+      'Is an inevitable outcome of social evolution',
       'Has problems but is generally a productive way to represent group interests',
       'Was imposed by colonialism and has uneven impacts on different peoples',
-      'Is an underlying cause of injustices experienced by First Nations and stateless peoples',
+      'Is a key cause of inequality and injustice, especially for First Nations and stateless people',
     ],
   },
   {
-    id: 'Q20',
+    id: 'Q19',
     schema: 'Schema 2',
     schemaColor: '#2E7D4F',
     type: 'forced',
@@ -284,10 +270,10 @@ const QUESTIONS = [
     text: 'The best path to global justice is:',
     options: [
       'Reform existing institutions like the United Nations and World Bank to be more representative',
-      'Build new institutions representing emerging powers (BRICS, AIIB) alongside existing ones',
+      'Maintaining order by respecting great powers and their spheres of influence',
       'Empower individuals through expanding markets, development, and rights protections',
       'Dismantle capitalism — institutions merely manage an inherently exploitative economic system',
-      'Moving beyond the state system toward forms of political organisation based on community self-determination',
+      'Moving beyond the state system towards forms of political organisation based on community self-determination',
       'Change culture and consciousness from the ground up through social movements and shifting norms',
     ],
   },
@@ -345,16 +331,16 @@ const AXIS_SCORING = {
     label: 'Immediate ← → Structural Injustice',
     leftLabel: 'Immediate',
     rightLabel: 'Structural',
-    range: [-6, 6],
+    range: [-3, 3],
     schema: 'Schema 2',
     schemaLabel: 'Schema 2 — Normative-Political Orientation',
     schemaColor: '#2E7D4F',
     categories: [
-      { min: -6, max: -4, label: 'Strong Immediate' },
-      { min: -3, max: -2, label: 'Immediate-leaning' },
+      { min: -3, max: -3, label: 'Strong Immediate' },
+      { min: -2, max: -2, label: 'Immediate-leaning' },
       { min: -1, max: 1, label: 'Mixed' },
-      { min: 2, max: 3, label: 'Structural-leaning' },
-      { min: 4, max: 6, label: 'Strong Structural' },
+      { min: 2, max: 2, label: 'Structural-leaning' },
+      { min: 3, max: 3, label: 'Strong Structural' },
     ],
   },
   reformTransform: {
@@ -375,10 +361,10 @@ const AXIS_SCORING = {
   },
 };
 
-// Q9 option weights for Material-Ideational axis: [A, B, C, D, E]
-const Q9_MI_WEIGHTS = [-3, -1, -1, 3, -3];
+// Q9 option weights for Material-Ideational axis: [A, B, C, D, E, F]
+const Q9_MI_WEIGHTS = [-3, -1, -1, 3, -3, -2];
 // Q9 option weights for Structure-Agency axis
-const Q9_SA_WEIGHTS = [-2, 3, 1, 0, -3];
+const Q9_SA_WEIGHTS = [-2, 3, 1, 0, -3, 2];
 // Q10 option weights for Material-Ideational axis: [A, B, C, D, E]
 const Q10_MI_WEIGHTS = [-3, -3, 3, 1, 2];
 // Q10 option weights for Structure-Agency axis
@@ -391,14 +377,12 @@ const Q5_IS_VALUES = {
   3: [2, 1],     // D
   4: [0, 0],     // E
 };
-// Q15 forced values for Immediate-Structural axis
-const Q15_IS_VALUES = { 0: 0, 1: -2, 2: 2 };
 // Reform-Transform forced values
-// Q17: Ecological crises (A=tech/reform, B=market/reform, C=colonial critique, D=replace capitalism, E=Global South dev)
-const Q17_RT_VALUES = { 0: -1, 1: -2, 2: 2, 3: 3, 4: 1 };
-// Q19: Nation-states  Q20: Global justice
-const Q19_RT_VALUES = { 0: -2, 1: -1, 2: 2, 3: 3 };
-const Q20_RT_VALUES = { 0: -2, 1: -1, 2: -2, 3: 3, 4: 3, 5: 2 };
+// Q16: Ecological crises (A=tech/reform, B=market/reform, C=colonial critique, D=replace capitalism, E=Global South dev)
+const Q16_RT_VALUES = { 0: -1, 1: -2, 2: 2, 3: 3, 4: 1 };
+// Q18: Nation-states  Q19: Global justice
+const Q18_RT_VALUES = { 0: -2, 1: -1, 2: 2, 3: 3 };
+const Q19_RT_VALUES = { 0: -2, 1: -1, 2: -2, 3: 3, 4: 3, 5: 2 };
 
 // Sub-diagnostic configurations
 const Q2_EPIST_VALUES = { 0: -2, 1: -1, 2: 2 };
@@ -406,7 +390,7 @@ const Q3_EPIST_VALUES = { 0: -2, 1: 3, 2: 1 };
 const Q1_HISTORICITY_VALUES = { 0: 2, 1: 0, 2: 2, 3: -1, 4: 1 };
 const Q12_FEMINIST_VALUES = { 0: 0, 1: 2, 2: 0, 3: 0, 4: 0 };
 const Q13_FEMINIST_VALUES = { 0: 1, 1: 2, 2: 3, 3: 0, 4: -1 };
-const Q18_SOVEREIGNTY_LABELS = {
+const Q17_SOVEREIGNTY_LABELS = {
   0: 'Absolute sovereignty',
   1: 'Qualified sovereignty',
   2: 'Liberal interventionist',
@@ -465,8 +449,8 @@ const TAG_DEFINITIONS = {
     max: 7,
     rules: [
       { q: 'Q14', type: 'rank_pos', match: 3, pts1: 2, pts2: 1 }, // Ecosystems (index 3)
-      { q: 'Q17', type: 'forced_eq', match: 2, pts: 2 }, // colonial/patriarchal attitudes
-      { q: 'Q17', type: 'forced_eq', match: 3, pts: 1 }, // replace capitalism (ecosocialist)
+      { q: 'Q16', type: 'forced_eq', match: 2, pts: 2 }, // colonial/patriarchal attitudes
+      { q: 'Q16', type: 'forced_eq', match: 3, pts: 1 }, // replace capitalism (ecosocialist)
     ],
   },
   peoplesMovements: {
@@ -485,7 +469,7 @@ const TAG_DEFINITIONS = {
     rules: [
       { q: 'Q12', type: 'forced_eq', match: 1, pts: 2 },
       { q: 'Q13', type: 'forced_in', match: [1, 2], pts: 2 },
-      { q: 'Q17', type: 'forced_eq', match: 2, pts: 2 }, // ecofeminist position
+      { q: 'Q16', type: 'forced_eq', match: 2, pts: 2 }, // ecofeminist position
       { q: 'Q11', type: 'forced_eq', match: 3, pts: 1 }, // mentions patriarchy
     ],
   },
@@ -493,13 +477,13 @@ const TAG_DEFINITIONS = {
     label: 'Indigenous / Postcolonial',
     max: 9,
     rules: [
-      { q: 'Q19', type: 'forced_in', match: [2, 3], pts: 2 },
+      { q: 'Q18', type: 'forced_in', match: [2, 3], pts: 2 },
       { q: 'Q14', type: 'rank_pos', match: 4, pts1: 2, pts2: 1 }, // Marginalised (index 4)
-      { q: 'Q16', type: 'likert_gte', min: 4, pts: 1 },
+      { q: 'Q15', type: 'likert_gte', min: 4, pts: 1 },
       { q: 'Q5', type: 'rank_top2', match: 1, pts: 1 },
       { q: 'Q2', type: 'forced_eq', match: 2, pts: 1 },
       { q: 'Q3', type: 'forced_eq', match: 1, pts: 1 },
-      { q: 'Q17', type: 'forced_eq', match: 2, pts: 1 }, // colonial attitudes critique
+      { q: 'Q16', type: 'forced_eq', match: 2, pts: 1 }, // colonial attitudes critique
     ],
   },
   confucianHierarchical: {
@@ -513,15 +497,15 @@ const TAG_DEFINITIONS = {
     label: 'Liberal Individualism',
     max: 2,
     rules: [
-      { q: 'Q20', type: 'forced_eq', match: 2, pts: 2 },
+      { q: 'Q19', type: 'forced_eq', match: 2, pts: 2 },
     ],
   },
   antiCapitalist: {
     label: 'Anti-Capitalist',
     max: 4,
     rules: [
-      { q: 'Q20', type: 'forced_eq', match: 3, pts: 2 },
-      { q: 'Q17', type: 'forced_eq', match: 3, pts: 2 }, // ecosocialist
+      { q: 'Q19', type: 'forced_eq', match: 3, pts: 2 },
+      { q: 'Q16', type: 'forced_eq', match: 3, pts: 2 }, // ecosocialist
     ],
   },
 };
@@ -611,14 +595,13 @@ function calculateAxes(answers) {
   // Immediate ← → Structural Injustice
   let is_ = 0;
   is_ += scoreRankRaw(answers.Q5, Q5_IS_VALUES);
-  is_ += scoreForcedLookup(answers.Q15, Q15_IS_VALUES);
-  is_ = clamp(is_, -6, 6);
+  is_ = clamp(is_, -3, 3);
 
   // Reform ← → Transform
   let rt = 0;
-  rt += scoreForcedLookup(answers.Q17, Q17_RT_VALUES);
+  rt += scoreForcedLookup(answers.Q16, Q16_RT_VALUES);
+  rt += scoreForcedLookup(answers.Q18, Q18_RT_VALUES);
   rt += scoreForcedLookup(answers.Q19, Q19_RT_VALUES);
-  rt += scoreForcedLookup(answers.Q20, Q20_RT_VALUES);
   rt = clamp(rt, -6, 9);
 
   return {
@@ -654,9 +637,9 @@ function calculateSubDiagnostics(answers) {
     { min: 3, max: 7, label: 'Post-positivist' },
   ];
 
-  // Structures Reproduce Domination: Q16
+  // Structures Reproduce Domination: Q15
   let srd = 0;
-  if (answers.Q16 != null) srd = answers.Q16 - 3;
+  if (answers.Q15 != null) srd = answers.Q15 - 3;
   srd = clamp(srd, -2, 2);
   const srdCategories = [
     { min: -2, max: -1, label: 'Skeptical' },
@@ -691,10 +674,10 @@ function calculateSubDiagnostics(answers) {
     { min: 3, max: 4, label: 'Historicised / critical' },
   ];
 
-  // Sovereignty: Q18 (categorical)
+  // Sovereignty: Q17 (categorical)
   const sovLabel =
-    answers.Q18 != null
-      ? Q18_SOVEREIGNTY_LABELS[answers.Q18] ?? 'Unknown'
+    answers.Q17 != null
+      ? Q17_SOVEREIGNTY_LABELS[answers.Q17] ?? 'Unknown'
       : null;
 
   // Epistemic Authority: Q2
@@ -771,12 +754,11 @@ function calculateTheoryAffinities(answers, axes, subDiag, tags) {
     pct += normalizeAxis(axes.reformTransform.score, AXIS_SCORING.reformTransform.range, 'low') * 15;
     pct += normalizeDiag(subDiag.epistemology, 'low') * 10;
     if (Array.isArray(a.Q1) && a.Q1.includes(3)) pct += 15; // Q1 includes D
-    if (a.Q18 === 1 || a.Q18 === 4) pct += 10; // Q18=B or E (sovereignty)
-    if (a.Q20 === 0 || a.Q20 === 2) pct += 10; // Q20=A or C (global justice)
-    if (a.Q15 === 0) pct += 10; // cosmopolitan
+    if (a.Q17 === 1 || a.Q17 === 4) pct += 10; // Q17=B or E (sovereignty)
+    if (a.Q19 === 0 || a.Q19 === 2) pct += 10; // Q19=A or C (global justice)
     if (a.Q11 === 2) pct += 5; // domestic coalitions
     if (a.Q4 === 0) pct += 5; // states lens
-    if (a.Q19 === 1) pct += 5; // states productive (nation-states)
+    if (a.Q18 === 1) pct += 5; // states productive (nation-states)
     if (Array.isArray(a.Q14) && a.Q14[0] === 6) pct += 5; // Q14 option G ranked first (order through institutions)
     results.liberalInstitutionalism = { label: 'Liberal Institutionalism', percent: clamp(Math.round(pct), 0, 100) };
   }
@@ -786,13 +768,13 @@ function calculateTheoryAffinities(answers, axes, subDiag, tags) {
     let pct = 0;
     pct += normalizeAxis(axes.materialIdeational.score, AXIS_SCORING.materialIdeational.range, 'high') * 25;
     pct += normalizeDiag(subDiag.epistemology, 'mid') * 10;
-    if (a.Q6 != null && a.Q6 >= 4) pct += 15; // norms shape behavior
+    if (a.Q6 != null && a.Q6 >= 4) pct += 15; // norms shape behaviour
     if (a.Q3 === 1 || a.Q3 === 2) pct += 10; // power or perspectives
     if (Array.isArray(a.Q9) && a.Q9.includes(3)) pct += 15; // Q9 ranks D
     if (a.Q11 === 3) pct += 5; // social structures (capitalism/class/patriarchy — constructivists see these as social constructs)
     if (a.Q8 != null && (a.Q8 === 2 || a.Q8 === 3)) pct += 5; // moderate epistemology
     if (Array.isArray(a.Q10) && a.Q10.includes(2)) pct += 10; // Q10 ranks C (norms)
-    // Constructivists favor reform to moderate transform
+    // Constructivists favour reform to moderate transform
     const rtScore = axes.reformTransform.score;
     if (rtScore >= -3 && rtScore <= 3) pct += 15;
     // Penalty for strong transform
@@ -809,7 +791,7 @@ function calculateTheoryAffinities(answers, axes, subDiag, tags) {
     if (Array.isArray(a.Q9) && a.Q9.includes(1)) pct += 10; // Q9 ranks B (leaders)
     if (Array.isArray(a.Q10) && a.Q10.includes(4)) pct += 10; // Q10 ranks E (personal beliefs)
     if (a.Q7 === 0 || a.Q7 === 3) pct += 10; // national security or state survival
-    if (a.Q18 === 5) pct += 5; // consequentialist (sovereignty)
+    if (a.Q17 === 5) pct += 5; // consequentialist (sovereignty)
     if (a.Q11 === 0) pct += 5; // rational unitary
     if (a.Q4 === 0) pct += 5; // states lens
     if (Array.isArray(a.Q14) && (a.Q14[0] === 6 || a.Q14[1] === 6)) pct += 8; // Q14 option G (order) in top 2
@@ -825,7 +807,7 @@ function calculateTheoryAffinities(answers, axes, subDiag, tags) {
     pct += normalizeAxis(axes.structureAgency.score, AXIS_SCORING.structureAgency.range, 'low') * 10;
     if (Array.isArray(a.Q5) && a.Q5.includes(3)) pct += 10; // Q5 ranks D
     if (a.Q7 === 2) pct += 10; // global capital
-    if (a.Q20 === 3) pct += 10; // dismantle capitalism (global justice)
+    if (a.Q19 === 3) pct += 10; // dismantle capitalism (global justice)
     if (a.Q11 === 3) pct += 10; // capitalism/class structures determine state behaviour
     results.marxismWorldSystems = { label: 'Marxism / World Systems', percent: clamp(Math.round(pct), 0, 100) };
   }
@@ -849,10 +831,9 @@ function calculateTheoryAffinities(answers, axes, subDiag, tags) {
     pct += normalizeAxis(axes.immediateStructural.score, AXIS_SCORING.immediateStructural.range, 'high') * 10;
     pct += normalizeAxis(axes.reformTransform.score, AXIS_SCORING.reformTransform.range, 'high') * 15;
     pct += normalizeDiag(subDiag.epistemology, 'high') * 10;
-    if (a.Q19 === 2 || a.Q19 === 3) pct += 10; // colonialism (nation-states)
+    if (a.Q18 === 2 || a.Q18 === 3) pct += 10; // colonialism (nation-states)
     if (a.Q3 === 1) pct += 10; // power shapes categories
-    if (a.Q15 === 2) pct += 5; // reparative justice
-    if (a.Q16 != null && a.Q16 >= 4) pct += 5; // colonial legacies
+    if (a.Q15 != null && a.Q15 >= 4) pct += 5; // colonial legacies
     if (subDiag.historicity.score >= 3) pct += 5; // historicised/critical
     if (Array.isArray(a.Q14) && (a.Q14[0] === 6 || a.Q14[1] === 6)) pct -= 10; // Q14 option G in top 2 (order over justice)
     results.postcolonial = { label: 'Postcolonial Theory', percent: clamp(Math.round(pct), 0, 100) };
@@ -864,7 +845,7 @@ function calculateTheoryAffinities(answers, axes, subDiag, tags) {
     pct += (tags.ecologicalRelational.score / tags.ecologicalRelational.max) * 30;
     pct += normalizeAxis(axes.reformTransform.score, AXIS_SCORING.reformTransform.range, 'high') * 20;
     if (Array.isArray(a.Q14) && a.Q14.includes(3)) pct += 10; // ecosystems (index 3)
-    if (a.Q20 === 5) pct += 5; // change consciousness (global justice)
+    if (a.Q19 === 5) pct += 5; // change consciousness (global justice)
     results.greenTheory = { label: 'Green Theory', percent: clamp(Math.round(pct), 0, 100) };
   }
 
@@ -873,8 +854,8 @@ function calculateTheoryAffinities(answers, axes, subDiag, tags) {
     let pct = 0;
     pct += (tags.indigenousPostcolonial.score / tags.indigenousPostcolonial.max) * 25;
     pct += normalizeAxis(axes.reformTransform.score, AXIS_SCORING.reformTransform.range, 'high') * 20;
-    if (a.Q19 === 3) pct += 15; // underlying cause of injustices (nation-states)
-    if (a.Q20 === 4) pct += 15; // center self-determination (global justice)
+    if (a.Q18 === 3) pct += 15; // key cause of inequality (nation-states)
+    if (a.Q19 === 4) pct += 15; // centre self-determination (global justice)
     if (a.Q3 === 1) pct += 10; // power shapes categories
     if (Array.isArray(a.Q14) && a.Q14.includes(4)) pct += 10; // marginalised peoples (index 4)
     if (Array.isArray(a.Q14) && (a.Q14[0] === 6 || a.Q14[1] === 6)) pct -= 15; // Q14 option G in top 2 (order over justice)
@@ -891,20 +872,18 @@ function calculateTheoryAffinities(answers, axes, subDiag, tags) {
       pct = 0;
     } else {
       pct = 40; // base
-      // Pattern 1: Relational Duty — Q14=H AND Q15=B
-      if (a.Q15 === 1) pct += 10;
-      // Pattern 2: Legitimacy-Based Sovereignty — Q18=D
-      if (a.Q18 === 3) pct += 10;
-      // Pattern 3: Moderate Material Structure
+      // Pattern 1: Legitimacy-Based Sovereignty — Q17=D
+      if (a.Q17 === 3) pct += 10;
+      // Pattern 2: Moderate Material Structure
       // Material axis: -8 to -3 AND Structure axis: -6 to +2
       const miScore = axes.materialIdeational.score;
       const saScore = axes.structureAgency.score;
       if (miScore >= -8 && miScore <= -3 && saScore >= -6 && saScore <= 2) pct += 10;
-      // Pattern 4: Weak Sovereignty Preference — Q18=A if Q14=H
-      if (a.Q18 === 0) pct += 5;
+      // Pattern 3: Weak Sovereignty Preference — Q17=A if Q14=H
+      if (a.Q17 === 0) pct += 5;
       // Negative filters
-      if (a.Q20 === 3) pct -= 15; // revolutionary anti-capitalism (global justice)
-      if (a.Q20 === 4) pct -= 15; // decolonial transformation (global justice)
+      if (a.Q19 === 3) pct -= 15; // revolutionary anti-capitalism (global justice)
+      if (a.Q19 === 4) pct -= 15; // decolonial transformation (global justice)
       if (axes.reformTransform.score >= 6) pct -= 10; // strong transform
       if (tags.structuralClass.score >= 4) pct -= 10; // class struggle emphasis
       if (axes.materialIdeational.score <= -12) pct -= 10; // strong marxist materialism
@@ -1070,7 +1049,7 @@ function generateCalculationReport(answers) {
   // ─── IMMEDIATE-STRUCTURAL ────────────────────────────────────────
   ln('════════════════════════════════════════════');
   ln('AXIS: Immediate ← → Structural Injustice');
-  ln('Sources: Q5, Q15');
+  ln('Sources: Q5');
   ln('────────────────────────────────────────────');
 
   let isTotal = 0;
@@ -1081,11 +1060,7 @@ function generateCalculationReport(answers) {
   ln(`  Q5 subtotal: ${q5is.total}`);
   isTotal += q5is.total;
 
-  const q15is = describeForced(answers.Q15, Q15_IS_VALUES, getQ('Q15')?.options);
-  ln(`Q15: ${q15is.step}`);
-  isTotal += q15is.value;
-
-  const isClamped = clamp(isTotal, -6, 6);
+  const isClamped = clamp(isTotal, -3, 3);
   ln(`RAW TOTAL: ${isTotal}${isTotal !== isClamped ? ` (clamped to ${isClamped})` : ''}`);
   ln(`CATEGORY: ${findCategory(AXIS_SCORING.immediateStructural.categories, isClamped)}`);
   ln();
@@ -1093,11 +1068,11 @@ function generateCalculationReport(answers) {
   // ─── REFORM-TRANSFORM ────────────────────────────────────────────
   ln('════════════════════════════════════════════');
   ln('AXIS: Reform ← → Transform');
-  ln('Sources: Q17, Q19, Q20');
+  ln('Sources: Q16, Q18, Q19');
   ln('────────────────────────────────────────────');
 
   let rtTotal = 0;
-  for (const [qId, valMap] of [['Q17', Q17_RT_VALUES], ['Q19', Q19_RT_VALUES], ['Q20', Q20_RT_VALUES]]) {
+  for (const [qId, valMap] of [['Q16', Q16_RT_VALUES], ['Q18', Q18_RT_VALUES], ['Q19', Q19_RT_VALUES]]) {
     const d = describeForced(answers[qId], valMap, getQ(qId)?.options);
     ln(`${qId}: ${d.step}`);
     rtTotal += d.value;
@@ -1128,11 +1103,11 @@ function generateCalculationReport(answers) {
   ln();
 
   // Structures Reproduce Domination
-  ln('Structures Reproduce Domination (Q16):');
-  if (answers.Q16 != null) {
-    const srdV = answers.Q16 - 3;
-    ln(`  Q16 (Likert ${answers.Q16}/5): ${answers.Q16} - 3 = ${srdV}`);
-  } else { ln('  Q16: Not answered → 0'); }
+  ln('Structures Reproduce Domination (Q15):');
+  if (answers.Q15 != null) {
+    const srdV = answers.Q15 - 3;
+    ln(`  Q15 (Likert ${answers.Q15}/5): ${answers.Q15} - 3 = ${srdV}`);
+  } else { ln('  Q15: Not answered → 0'); }
   ln();
 
   // Feminist IR
@@ -1159,9 +1134,9 @@ function generateCalculationReport(answers) {
   ln();
 
   // Sovereignty
-  ln('Sovereignty Orientation (Q18):');
-  if (answers.Q18 != null) {
-    ln(`  ${OPTION_LETTERS[answers.Q18]}: ${Q18_SOVEREIGNTY_LABELS[answers.Q18]}`);
+  ln('Sovereignty Orientation (Q17):');
+  if (answers.Q17 != null) {
+    ln(`  ${OPTION_LETTERS[answers.Q17]}: ${Q17_SOVEREIGNTY_LABELS[answers.Q17]}`);
   } else { ln('  Not answered'); }
   ln();
 
@@ -2399,7 +2374,7 @@ export default function IRCompass() {
               }}
             >
               This diagnostic tool helps you identify your theoretical orientation
-              in International Relations. It takes about 10 minutes to complete 20
+              in International Relations. It takes about 10 minutes to complete 19
               questions.
             </p>
           </div>
@@ -2467,7 +2442,7 @@ export default function IRCompass() {
             >
               Developed by Jon Symons and colleagues in the School of
               International Studies at Macquarie University for POIR2030 and
-              other units. Design and coding utilized Claude by Anthropic.
+              other units. Design and vibecoding utilised Claude by Anthropic.
             </p>
             <p
               style={{
@@ -2479,7 +2454,7 @@ export default function IRCompass() {
             >
               This tool tries to map where you stand across major IR theoretical
               traditions (realism, liberalism, constructivism, Marxism, feminism,
-              postcolonial theory, and others). You'll answer 20 questions about
+              postcolonial theory, and others). You'll answer 19 questions about
               world politics and receive a personalised profile that should help
               you navigate international relations theories.
             </p>
