@@ -331,16 +331,16 @@ const AXIS_SCORING = {
     label: 'Immediate ← → Structural Injustice',
     leftLabel: 'Immediate',
     rightLabel: 'Structural',
-    range: [-3, 3],
+    range: [-4, 4],
     schema: 'Schema 2',
     schemaLabel: 'Schema 2 — Normative-Political Orientation',
     schemaColor: '#2E7D4F',
     categories: [
-      { min: -3, max: -3, label: 'Strong Immediate' },
+      { min: -4, max: -3, label: 'Strong Immediate' },
       { min: -2, max: -2, label: 'Immediate-leaning' },
       { min: -1, max: 1, label: 'Mixed' },
       { min: 2, max: 2, label: 'Structural-leaning' },
-      { min: 3, max: 3, label: 'Strong Structural' },
+      { min: 3, max: 4, label: 'Strong Structural' },
     ],
   },
   reformTransform: {
@@ -364,7 +364,7 @@ const AXIS_SCORING = {
 // Q9 option weights for Material-Ideational axis: [A, B, C, D, E, F]
 const Q9_MI_WEIGHTS = [-3, -1, -1, 3, -3, -2];
 // Q9 option weights for Structure-Agency axis
-const Q9_SA_WEIGHTS = [-2, 3, 1, 0, -3, 2];
+const Q9_SA_WEIGHTS = [-2, 3, 1, 0, -3, -2];
 // Q10 option weights for Material-Ideational axis: [A, B, C, D, E]
 const Q10_MI_WEIGHTS = [-3, -3, 3, 1, 2];
 // Q10 option weights for Structure-Agency axis
@@ -595,7 +595,7 @@ function calculateAxes(answers) {
   // Immediate ← → Structural Injustice
   let is_ = 0;
   is_ += scoreRankRaw(answers.Q5, Q5_IS_VALUES);
-  is_ = clamp(is_, -3, 3);
+  is_ = clamp(is_, -4, 4);
 
   // Reform ← → Transform
   let rt = 0;
@@ -789,6 +789,7 @@ function calculateTheoryAffinities(answers, axes, subDiag, tags) {
     pct += normalizeAxis(axes.materialIdeational.score, AXIS_SCORING.materialIdeational.range, 'low') * 15;
     pct += normalizeAxis(axes.structureAgency.score, AXIS_SCORING.structureAgency.range, 'high') * 20;
     if (Array.isArray(a.Q9) && a.Q9.includes(1)) pct += 10; // Q9 ranks B (leaders)
+    if (Array.isArray(a.Q9) && a.Q9.includes(5)) pct += 15; // Q9 ranks F (human nature)
     if (Array.isArray(a.Q10) && a.Q10.includes(4)) pct += 10; // Q10 ranks E (personal beliefs)
     if (a.Q7 === 0 || a.Q7 === 3) pct += 10; // national security or state survival
     if (a.Q17 === 5) pct += 5; // consequentialist (sovereignty)
@@ -1060,7 +1061,7 @@ function generateCalculationReport(answers) {
   ln(`  Q5 subtotal: ${q5is.total}`);
   isTotal += q5is.total;
 
-  const isClamped = clamp(isTotal, -3, 3);
+  const isClamped = clamp(isTotal, -4, 4);
   ln(`RAW TOTAL: ${isTotal}${isTotal !== isClamped ? ` (clamped to ${isClamped})` : ''}`);
   ln(`CATEGORY: ${findCategory(AXIS_SCORING.immediateStructural.categories, isClamped)}`);
   ln();
