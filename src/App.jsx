@@ -895,6 +895,26 @@ function calculateTheoryAffinities(answers, axes, subDiag, tags) {
     results.confucianIR = { label: 'Confucian IR / Moral Realism', percent: clamp(Math.round(pct), 0, 100) };
   }
 
+  // --- Left-Ecomodernism / Ecosocialism ---
+  {
+    let pct = 0;
+    // Gate: must select Q16 option A (technology/state investment)
+    if (a.Q16 !== 0) {
+      pct = 0;
+    } else {
+      pct = 30; // base
+      // Reinforcing patterns (anti-capitalist)
+      if (tags.antiCapitalist.score >= 2) pct += 20;
+      if (tags.structuralClass.score >= 3) pct += 15;
+      if (axes.reformTransform.score >= 4) pct += 15;
+      if (a.Q19 === 3) pct += 10; // dismantle capitalism
+      // Negative filters (too reformist)
+      if (axes.reformTransform.score <= -2) pct -= 20;
+      if (tags.stateStrategic.score >= 4 && tags.structuralClass.score < 2) pct -= 10;
+    }
+    results.leftEcomodernism = { label: 'Left-Ecomodernism / Ecosocialism', percent: clamp(Math.round(pct), 0, 70), minDisplay: 35 };
+  }
+
   return results;
 }
 
@@ -1883,12 +1903,14 @@ function Results({ scoring, answers }) {
   // Sort theories by percent descending
   const sortedTheories = Object.entries(theories)
     .map(([key, t]) => ({ key, ...t }))
+    .filter(t => t.minDisplay == null || t.percent >= t.minDisplay)
     .sort((a, b) => b.percent - a.percent);
 
   // Top theory color palette
   const theoryColors = [
     '#7C4A9E', '#4A6FA5', '#2E7D4F', '#B45309', '#0F766E',
     '#9333EA', '#6366F1', '#DC2626', '#059669', '#D97706',
+    '#0891B2',
   ];
 
   // Tag entries sorted by score descending
