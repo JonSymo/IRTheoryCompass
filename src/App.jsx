@@ -347,12 +347,12 @@ const AXIS_SCORING = {
     label: 'Reform ← → Transform',
     leftLabel: 'Reform',
     rightLabel: 'Transform',
-    range: [-6, 9],
+    range: [-7, 9],
     schema: 'Schema 2',
     schemaLabel: 'Schema 2 — Normative-Political Orientation',
     schemaColor: '#2E7D4F',
     categories: [
-      { min: -6, max: -3, label: 'Strong Reform' },
+      { min: -7, max: -3, label: 'Strong Reform' },
       { min: -2, max: -1, label: 'Reform-leaning' },
       { min: 0, max: 1, label: 'Mixed' },
       { min: 2, max: 4, label: 'Transform-leaning' },
@@ -382,7 +382,7 @@ const Q5_IS_VALUES = {
 const Q16_RT_VALUES = { 0: -1, 1: -2, 2: 2, 3: 3, 4: 1 };
 // Q18: Nation-states  Q19: Global justice
 const Q18_RT_VALUES = { 0: -2, 1: -1, 2: 2, 3: 3 };
-const Q19_RT_VALUES = { 0: -2, 1: -1, 2: -2, 3: 3, 4: 3, 5: 2 };
+const Q19_RT_VALUES = { 0: -2, 1: -3, 2: -2, 3: 3, 4: 3, 5: 2 };
 
 // Sub-diagnostic configurations
 const Q2_EPIST_VALUES = { 0: -2, 1: -1, 2: 2 };
@@ -404,7 +404,7 @@ const Q2_AUTHORITY_VALUES = { 0: -2, 1: -1, 2: 3 };
 const TAG_DEFINITIONS = {
   stateStrategic: {
     label: 'State Strategic',
-    max: 9,
+    max: 11,
     rules: [
       { q: 'Q4', type: 'forced_eq', match: 0, pts: 2 },
       { q: 'Q7', type: 'forced_eq', match: 0, pts: 2 },
@@ -412,6 +412,7 @@ const TAG_DEFINITIONS = {
       { q: 'Q12', type: 'forced_eq', match: 0, pts: 1 },
       { q: 'Q1', type: 'rank_includes', match: 1, pts: 1 },
       { q: 'Q14', type: 'rank_pos', match: 6, pts1: 2, pts2: 1 }, // Option G (international order) in top 2
+      { q: 'Q19', type: 'forced_eq', match: 1, pts: 2 }, // sphere of influence (global justice)
     ],
   },
   elitePolitical: {
@@ -602,7 +603,7 @@ function calculateAxes(answers) {
   rt += scoreForcedLookup(answers.Q16, Q16_RT_VALUES);
   rt += scoreForcedLookup(answers.Q18, Q18_RT_VALUES);
   rt += scoreForcedLookup(answers.Q19, Q19_RT_VALUES);
-  rt = clamp(rt, -6, 9);
+  rt = clamp(rt, -7, 9);
 
   return {
     materialIdeational: {
@@ -744,6 +745,7 @@ function calculateTheoryAffinities(answers, axes, subDiag, tags) {
     if (a.Q7 === 0) pct += 10;
     if (a.Q4 === 0) pct += 5;
     if (Array.isArray(a.Q14) && (a.Q14[0] === 6 || a.Q14[1] === 6)) pct += 10; // Q14 option G (order) in top 2
+    if (a.Q19 === 1) pct += 5; // sphere of influence (compatible with neorealism)
     results.neorealism = { label: 'Neorealism', percent: clamp(Math.round(pct), 0, 100) };
   }
 
@@ -796,6 +798,7 @@ function calculateTheoryAffinities(answers, axes, subDiag, tags) {
     if (a.Q11 === 0) pct += 5; // rational unitary
     if (a.Q4 === 0) pct += 5; // states lens
     if (Array.isArray(a.Q14) && (a.Q14[0] === 6 || a.Q14[1] === 6)) pct += 8; // Q14 option G (order) in top 2
+    if (a.Q19 === 1) pct += 10; // sphere of influence (conservative realism)
     results.classicalRealism = { label: 'Classical Realism', percent: clamp(Math.round(pct), 0, 100) };
   }
 
@@ -1078,7 +1081,7 @@ function generateCalculationReport(answers) {
     ln(`${qId}: ${d.step}`);
     rtTotal += d.value;
   }
-  const rtClamped = clamp(rtTotal, -6, 9);
+  const rtClamped = clamp(rtTotal, -7, 9);
   ln(`RAW TOTAL: ${rtTotal}${rtTotal !== rtClamped ? ` (clamped to ${rtClamped})` : ''}`);
   ln(`CATEGORY: ${findCategory(AXIS_SCORING.reformTransform.categories, rtClamped)}`);
   ln();
