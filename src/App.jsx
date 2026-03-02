@@ -258,7 +258,7 @@ const QUESTIONS = [
       'Is an inevitable outcome of social evolution',
       'Has problems but is generally a productive way to represent group interests',
       'Was imposed by colonialism and has uneven impacts on different peoples',
-      'Is a key cause of inequality and injustice, especially for First Nations and stateless people',
+      'Is a source of violence against those it marginalises through policing, borders, and criminalisation',
     ],
   },
   {
@@ -734,7 +734,7 @@ function calculateTheoryAffinities(answers, axes, subDiag, tags) {
   const a = answers;
   const results = {};
 
-  // --- Neorealism ---
+  // --- Structural Realism ---
   {
     let pct = 0;
     pct += (tags.stateStrategic.score / tags.stateStrategic.max) * 30;
@@ -746,7 +746,7 @@ function calculateTheoryAffinities(answers, axes, subDiag, tags) {
     if (a.Q4 === 0) pct += 5;
     if (Array.isArray(a.Q14) && (a.Q14[0] === 6 || a.Q14[1] === 6)) pct += 10; // Q14 option G (order) in top 2
     if (a.Q19 === 1) pct += 5; // sphere of influence (compatible with neorealism)
-    results.neorealism = { label: 'Neorealism', percent: clamp(Math.round(pct), 0, 100) };
+    results.neorealism = { label: 'Structural Realism', percent: clamp(Math.round(pct), 0, 100) };
   }
 
   // --- Liberal Institutionalism ---
@@ -917,6 +917,234 @@ function calculateTheoryAffinities(answers, axes, subDiag, tags) {
 
   return results;
 }
+
+// ─── THEORY PROFILE READINGS ────────────────────────────────────────────────
+
+const THEORY_PROFILES = {
+  neorealism: {
+    emoji: '\u{1F3B1}',
+    heading: 'Structural Realism',
+    body: [
+      'Structural realists have often been the least popular scholars in the International Relations theory zodiac (mind you, practically everyone in government calls themselves a \u201Crealist\u201D). No-one makes friends with cold, calculating analysis, or by rejecting liberal moralism. Recently though, John Mearsheimer\u2019s lectures on Ukraine/NATO have accumulated Kardashian-level YouTube views \u2013 so things might be looking up for Realists.',
+      'Neorealists lean toward pessimism and love to prudently assess risks, especially of using military force. Their greatest scorn is for the strategic naivety of liberal imperialists who think American power can remake the world for the better. While others dream about cooperation and shared norms, or promise humanitarian interventions to liberate the oppressed, neorealists think only of the sober pursuit of interests. They see international law and institutions surviving only so long as they serve the interests of the powerful. Realists have a long record of condemning unlawful US military action (Iran, Iraq, Vietnam etc). But they reject these \u2018wars of choice\u2019 because they are counterproductive, not because they are wrong.',
+    ],
+    watchOut: 'Watch out that your tragic disposition doesn\u2019t mean you fail to see possibilities for change. Sometimes progress is possible even when the structure says no.',
+    vibeWith: [
+      'Kenneth Waltz \u2013 Made structure the star of IR theory and didn\u2019t apologise for it (we read him in Week 4)',
+      'John Mearsheimer \u2013 Says great powers lie, cheat, and steal because the system makes them',
+    ],
+    challengeYou: [
+      'Kathryn Sikkink \u2013 Would show you how norms change state behaviour (we read her in Week 6)',
+      'Postcolonial scholars \u2013 Would ask why you treat the \u201Cstate system\u201D as natural rather than colonial',
+    ],
+    quote: { text: 'In international politics, as in any self-help system, the units of greatest capability set the scene of action for others as well as for themselves.', attribution: 'Kenneth Waltz, Theory of World Politics' },
+  },
+  liberalInstitutionalism: {
+    emoji: '\u2696\uFE0F',
+    heading: 'Liberal Institutionalism',
+    body: [
+      'John Lennon was thinking of you when he wrote: Imagine all the people, living life in peace? You may be a dreamer, but you\u2019re not the only one. Liberals are natural optimists who reckon everything\u2019s going to come up Milhouse. They also dominated Western public discourse up until \u2013 roughly \u2013 the election of Trump in 2016.',
+      'Whereas Realists see a world of competition and power, liberals see states slowly building the architecture of cooperation \u2013 treaties, trade agreements, international courts, climate accords. You think institutions work by creating common knowledge, making commitments credible, and allowing states to coordinate. When others kvetch about a world in disarray, you probably find yourself defending the UN\u2019s achievements, or pointing out that the World Trade Organisation has prevented trade wars and global recession.',
+    ],
+    watchOut: 'Watch out for: Sometimes \u201Cthe rules-based international order\u201D is just a polite way of saying \u201CUS-led\u201D. Keohane called this \u201Ccooperation under hegemony\u201D for a reason. If your liberal values have you supporting the use of force to \u2018liberate\u2019 oppressed people, take a beat to assess whose interests you\u2019re advancing.',
+    vibeWith: [
+      'Robert Keohane \u2013 Argues institutions matter even after hegemony fades (we read \u201CAfter Hegemony\u201D in Week 3)',
+      'Anne-Marie Slaughter \u2013 Writes about networks of judges, regulators, and bureaucrats cooperating across borders',
+    ],
+    challengeYou: [
+      'Kenneth Waltz (Week 4) \u2013 Thinks institutions just reflect power distributions, not independent forces',
+      'Robert Cox (Week 5) \u2013 \u201CThe UN is not a realm of equality but a site for great power management\u201D',
+      'Sanjay Seth (Week 10) \u2013 Would ask whose universalism your \u201Cinternational order\u201D represents',
+    ],
+    quote: { text: 'Institutions do not enforce themselves.', attribution: 'Robert Keohane' },
+  },
+  constructivism: {
+    emoji: '\u{1F422}',
+    heading: 'Constructivism',
+    body: [
+      'Do you know the scene in Mean Girls where Amanda Seyfried tells Lindsay Lohan \u201COn Wednesdays we wear pink\u201D \u2013 establishing the norms that set their clique apart? You think world politics works that way too. Just like in high school, norms, identities and ideas shape how states act, what states want, and who has influence.',
+      'Why did chemical weapons become taboo? Why did international law reject colonialism? Why do women have the vote nearly everywhere? Why, for a time, did states refrain from assassinating foreign leaders or seizing each other\u2019s territory? Constructivists think norms shape what\u2019s legitimate and identity shapes threat perception. Change the ideas, change the world.',
+    ],
+    watchOut: 'Watch out for: To their critics, constructivism is liberalism in a leather jacket \u2013 still thinking ideas shape material reality, not the other way around. Don\u2019t forget to ask what role new technologies, class power, and military force play in shaping the world.',
+    vibeWith: [
+      'Kathryn Sikkink \u2013 Traces how human rights norms spread and change state behaviour (we read her work on torture in Week 6)',
+      'Peter Katzenstein \u2013 Studies how identity shapes security policy',
+      'Martha Finnemore \u2013 Shows how international organisations socialise states into new norms',
+    ],
+    challengeYou: [
+      'Realists like Kenneth Waltz (Week 4) \u2013 Thinks you\u2019re naive about material power (surprise, surprise)',
+      'Robert Cox \u2013 Would tell you to ask whose interests benefit when norms change',
+      'Maja Zehfuss \u2013 Worries mainstream constructivism got too comfortable and not critical enough (we read her warning in Week 7)',
+    ],
+    quote: { text: 'Anarchy is what states make of it.', attribution: 'Alexander Wendt' },
+  },
+  classicalRealism: {
+    emoji: '\u2694\uFE0F',
+    heading: 'Classical Realism',
+    body: [
+      'Classical realists are the historians of the IR zodiac. While their neorealist cousins model the abstract structure of world politics like pool players calculating angles, classical realists seek patterns in historical experience, and reflect on the limited space for moral action amid the tragic dilemmas of political life.',
+      'You think humans are fundamentally flawed \u2013 driven by fear, ambition, and the desire for power. This doesn\u2019t make you a nihilist; it makes you a pessimist who thinks clearly about what politics can achieve. You think actions should be judged primarily by their consequences. Hans Morgenthau said it best: \u201CTo know with despair that the political act is inevitably evil, and to act nevertheless, is moral courage. To choose among several expedient actions the least evil one is moral judgment.\u201D',
+    ],
+    watchOut: 'Watch out for: Remember Hannah Arendt\u2019s warning: \u201Cthose who choose the lesser evil forget very quickly that they chose evil.\u201D',
+    vibeWith: [
+      'Hans Morgenthau \u2013 Wrote that politics is a struggle for power, but also that it must be tempered by ethics (we read his realist theory in Week 2)',
+      'Thucydides \u2013 The Melian Dialogue (Week 2) remains compelling 2,400 years on',
+      'Reinhold Niebuhr \u2013 Christian realism',
+      'E.H. Carr \u2013 On the twenty years\u2019 crisis and why we should balance realism and utopian thinking',
+    ],
+    challengeYou: [
+      'Kathryn Sikkink (Week 6) \u2013 Ideas change what leaders want; it\u2019s not just human nature',
+      'Robert Cox (Week 5) \u2013 Would ask whose \u2018human nature\u2019 realism universalises',
+      'Aileen Moreton-Robinson (Week 9) \u2013 Colonial violence reveals what you call \u2018human nature\u2019 is often just European power',
+    ],
+    quote: { text: 'To know with despair that the political act is inevitably evil, and to act nevertheless, is moral courage.', attribution: 'Hans Morgenthau, \u201CThe Evil of Politics and the Ethics of Evil\u201D (1945)' },
+  },
+  marxismWorldSystems: {
+    emoji: '\u{1F6A9}',
+    heading: 'Marxism / World Systems',
+    body: [
+      'You are Katniss Everdeen in the Hunger Games. You see how the Capitol (the West) exploits the Districts (the Global South), and you\u2019re ready to join the resistance.',
+      'You have no time for realists (servants of state power), constructivists or liberals (servants of self-serving bourgeois morality). Instead, you see the warp and weft of history \u2013 how changing methods of production shape class formations, and how the ideologies people believe in grow from material conditions. Your disdain for bourgeois ideology is captured in Rosa Luxemburg\u2019s statement \u201CThe most revolutionary thing one can do is always to proclaim loudly what is happening.\u201D',
+      'You know global poverty isn\u2019t a development problem to be solved \u2013 it\u2019s how capitalism works \u2013 extracting cheap labour and resources from the South. You think the state system organises and legitimates this exploitation. And so you\u2019ve figured human equality requires that working people seize the means of production, and (if you\u2019re a classic Marxist) allow the state to wither away.',
+    ],
+    watchOut: 'Watch out for: You\u2019ve seen the totality. Be careful that others don\u2019t mistake your holistic analysis for dogma; or think your focus on class conflict blinds you to other forms of injustice, like racism and sexism.',
+    vibeWith: [
+      'Robert Cox \u2013 Asked \u201Cfor whom, for what purpose?\u201D and made Gramscian hegemony central to IR (we read him in Week 5)',
+      'Rosa Luxemburg \u2013 Wrote about imperialism and capital accumulation',
+      'Immanuel Wallerstein \u2013 Mapped the world-system: core, periphery, semi-periphery',
+      'Silvia Federici \u2013 Shows capitalism requires women\u2019s unpaid reproductive labour',
+    ],
+    challengeYou: [
+      'Kenneth Waltz \u2013 \u201CStates, not classes, are the units that matter\u201D',
+    ],
+    quote: null,
+  },
+  feminism: {
+    emoji: '\u{1F4AA}',
+    heading: 'Feminism',
+    body: [
+      'Feminist scholars like Jan Pettman call IR a \u201Cmasculinist discipline\u201D \u2013 masculinist in \u201Cits personnel and in how it understands states, wars, and markets\u201D. You ask challenging questions like: where are the women? What kinds of masculinities and femininities allow the world to function? How does patriarchy intersect with colonialism, race, and class?',
+      'Women may not have been in the war rooms making decisions, but they were doing the background work that makes \u2018high politics\u2019 possible. They were not writing the laws of war, but they were living with the consequences of patriarchal violence.',
+      'You see gender everywhere because it is everywhere. You think IR theory is most masculinist when it\u2019s pretending to be neutral, because that\u2019s when it\u2019s obscuring women\u2019s perspectives and experiences most completely. You make the invisible visible \u2013 and the establishment resents you because it\u2019s uncomfortable.',
+    ],
+    watchOut: 'Watch out for: \u201CWomen\u201D isn\u2019t a unified category. It\u2019s fractured by race, class, geography, colonialism. Liberal feminism that wants more women CEOs isn\u2019t the same as feminism that wants to dismantle capitalism and patriarchy together.',
+    vibeWith: [
+      'Jeanne Morefield \u2013 Questions the exclusions of the masculinist IR canon (Week 8)',
+      'Cynthia Enloe \u2013 Showed that military bases need bartenders, sex workers, and wives \u2013 all women, all made invisible',
+      'Jan Pettman \u2013 The founder of Australian feminist international relations',
+    ],
+    challengeYou: [
+      'Aileen Moreton-Robinson\u2019s \u201CTalkin\u2019 Up to the White Woman\u201D (2021) will challenge you to think about the inadvertent complicity of many white feminists in racial oppression',
+      'John Mearsheimer, Kenneth Waltz etc \u2013 Write as though gender is irrelevant to power politics',
+    ],
+    quote: { text: '\u2018Womenandchildren\u2019 is not a description of reality but a political move.', attribution: 'Cynthia Enloe' },
+  },
+  postcolonial: {
+    emoji: '\u270A\u{1F3FE}',
+    heading: 'Postcolonial Theory',
+    body: [
+      'Postcolonial scholars believe the \u201Cinternational system\u201D isn\u2019t universal or neutral \u2013 it was built through colonialism and still operates through colonial logics. When others talk about \u201Cfailed states\u201D and \u201Cdevelopment,\u201D you hear echoes of the colonial \u201Ccivilising mission.\u201D You know that concepts IR theory takes for granted \u2013 sovereignty, progress, civilisation, even \u201Cinternational\u201D itself \u2013 carry colonial DNA.',
+      'Postcolonial theory has taken different forms. Frantz Fanon wrote about colonial violence \u2013 both physical and psychological \u2013 and the necessity of liberation. Edward Said showed how Western \u201Cknowledge\u201D about the non-West was a technology of power. Gayatri Spivak shows how Western philosophy required the figure of the colonised \u2018native informant\u2019 \u2013 someone who could be known but never truly speak \u2013 to construct European rationality itself. She also critiqued colonial logic (\u2018white men saving brown women from brown men\u2019) and white feminism\u2019s complicity in it. Contemporary scholars like Ol\u00FAf\u1EB9\u0301mi T\u00E1\u00EDw\u00F2 push postcolonial thought toward reparative politics: not just diagnosing colonial harm, but building alternatives.',
+    ],
+    watchOut: 'Watch out for: Don\u2019t let critique substitute for construction. As T\u00E1\u00EDw\u00F2 argues, we need to move from exposing what\u2019s wrong to articulating what reparative justice actually requires.',
+    vibeWith: [
+      'Sanjay Seth \u2013 Challenges IR\u2019s universalist claims and shows how they\u2019re rooted in European history (we read him in Week 10)',
+      'Ol\u00FAf\u1EB9\u0301mi T\u00E1\u00EDw\u00F2 \u2013 Thinking constructively about reparations beyond just acknowledgment (Week 10 reading)',
+    ],
+    challengeYou: [
+      'Kenneth Waltz \u2013 Thinks you dwell too much on history; structure is what matters',
+      'Samuel Huntington \u2013 Called colonialism \u201Cmodernisation\u201D',
+    ],
+    quote: null,
+  },
+  greenTheory: {
+    emoji: '\u{1F30D}',
+    heading: 'Green Theory',
+    body: [
+      '\u201CIt\u2019s not easy being green.\u201D If Kermit the Frog taught us anything it\u2019s that \u201Cpeople tend to pass you over\u201D if you\u2019re green. Green theorists are cursed to see the future but not be heard. While everyone else debates power transitions, trade agreements, security threats and the impacts of AI, you\u2019re pointing to long-term trends and saying \u201Cnone of this matters if we make the planet uninhabitable.\u201D',
+      'You know states aren\u2019t the only actors \u2013 rivers, forests, biomes and climate systems shape politics too. These aren\u2019t just resources or constraints on human action \u2013 they\u2019re active participants that shape what\u2019s possible in politics.',
+    ],
+    watchOut: 'Watch out for: Don\u2019t let ecological crisis blind you to the everyday crises of global inequality; or to the risk that \u2018limits\u2019 discourses might be taken up by eco-fascists.',
+    vibeWith: [
+      'Robyn Eckersley \u2013 Green political theory and ecological democracy',
+      'Andreas Malm \u2013 It\u2019s not \u201Cthe Anthropocene,\u201D it\u2019s the Capitalocene \u2013 capitalism did this',
+      'Donna Haraway \u2013 On multispecies worlds and staying with the trouble',
+    ],
+    challengeYou: [
+      'John Mearsheimer \u2013 States prioritise power over planet (unfortunately probably right)',
+      'Robert Keohane \u2013 Thinks well-designed international institutions are vital to climate action (you think this piecemeal reformism is doomed to fail)',
+    ],
+    quote: { text: 'We can\u2019t solve problems by using the same kind of thinking we used when we created them.', attribution: 'Albert Einstein' },
+  },
+  indigenousDecolonial: {
+    emoji: '\u{1F3D4}\uFE0F',
+    heading: 'Indigenous / Decolonial',
+    body: [
+      'Indigenous and decolonial scholars don\u2019t just critique IR theory \u2013 they reveal that the entire discipline is implicated in erasing Indigenous peoples and their political systems. The \u201Cstate system\u201D isn\u2019t a natural, universal value-free system; it\u2019s a technology of dispossession that has been violently imposed on much of the world.',
+      'For First Nations peoples, the most central questions are often the ones that mainstream IR theory ignores.',
+      'You know that borders are violence. Sovereignty is a colonial concept. When liberals talk about reforming institutions, you\u2019re asking: why are we accepting the state as the unit of analysis at all? Indigenous peoples had governance before colonisation, and continue to practise and develop their political systems.',
+    ],
+    watchOut: 'Watch out for: As Eve Tuck and K Wayne Yang warn in \u201CDecolonisation is not a Metaphor\u201D, the radicalism of decolonial ideas is lost when decolonisation becomes a metaphor (e.g. people who want to \u201Cdecolonise education\u201D). Decolonisation means the repatriation of First Nations\u2019 land and life.',
+    vibeWith: [
+      'Aileen Moreton-Robinson (Week 9) \u2013 White possession is ongoing, not historical; the Australian state is built on theft',
+      'Glen Coulthard \u2013 Recognition from the settler state isn\u2019t liberation; we need resurgence',
+    ],
+    challengeYou: [
+      'Mainstream IR as a whole \u2013 The discipline treats states as natural units, erasing the colonial violence that created them',
+      'Liberal multiculturalists \u2013 Think cultural recognition and minority rights are enough; miss that it\u2019s about sovereignty and land, not inclusion',
+    ],
+    quote: { text: 'The nation-state of Australia is predicated on the dispossession of Indigenous peoples. White possession is not merely a historical fact, but an ongoing structure.', attribution: 'Aileen Moreton-Robinson' },
+  },
+  confucianIR: {
+    emoji: '\u262F\uFE0F',
+    heading: 'Confucian IR / Moral Realism',
+    body: [
+      'You see international politics as fundamentally relational. States exist in webs of relationships where moral authority matters, not just material capabilities. A hegemon that acts without virtue loses legitimacy and breeds resistance. A rising power that demonstrates benevolence can lead without conquering. Harmony doesn\u2019t mean everyone agrees \u2013 it means each party fulfils their role: rulers showing benevolence, subjects showing loyalty, stronger states showing restraint.',
+      'Confucian IR scholars think Western IR theory got some big things wrong. Not everything is anarchy and competition. Not all hierarchy is oppression. And power without virtue creates resentment, not order.',
+    ],
+    watchOut: 'Watch out for: Could \u2018harmony\u2019 be a euphemism for domination when taken up by powerful states?',
+    vibeWith: [
+      'Yan Xuetong \u2013 Power matters, but so does moral authority; leaders need both',
+      'Qin Yaqing \u2013 Relationality and process in world politics',
+    ],
+    challengeYou: [
+      'John Mearsheimer \u2013 Virtue is window-dressing; power is all that matters (you disagree)',
+      'Rosenlee, Li-Hsiang and many other feminist scholars have debated whether Confucian hierarchy is inherently gendered, or is compatible with feminist care ethics. See: \u201CGender in Confucian Philosophy\u201D, The Stanford Encyclopedia of Philosophy (Spring 2023 Edition)',
+    ],
+    quote: null,
+  },
+  leftEcomodernism: {
+    emoji: '\u{1F331}',
+    heading: 'Left-Ecomodernism / Ecosocialism',
+    body: [
+      'Psst\u2026 don\u2019t tell anyone we said this, a political compass is supposed to be neutral. But your answers on climate and capitalism are objectively correct. You see what too many people miss: capitalism won\u2019t solve climate change, but we also can\u2019t meet the needs of 8 billion people and save the planet by rejecting technology.',
+      'You believe technological progress and public investment in green infrastructure are necessary to address climate change, but you also recognise that capitalism itself is a deeper problem. You\u2019re not a techno-optimist who thinks markets will save us, but you\u2019re also not a primitivist who thinks humanity should abandon advanced technology. Your position: transition away from capitalism and use all our technological capacities to meet human needs while respecting planetary boundaries. Amen.',
+    ],
+    watchOut: 'Watch out for: This is a hard position to hold without contradictions.',
+    vibeWith: [
+      'Matt Huber \u2013 Climate change is class war',
+      'Leigh Phillips \u2013 Large-scale planning is actually possible (see: Walmart, but socialist)',
+      'Aaron Bastani \u2013 Fully automated luxury communism isn\u2019t just a meme, it\u2019s a program',
+    ],
+    challengeYou: [],
+    quote: null,
+  },
+};
+
+// ─── THEORY BRIEF BLURBS (for secondary matches 40-60%) ─────────────────────
+
+const THEORY_BLURBS = {
+  neorealism: 'You see power and material capabilities as the main drivers of state behaviour. In an anarchic world without world government, states must look after their own security because no-one else will.',
+  liberalInstitutionalism: 'You recognise that states cooperate through institutions even if the world is anarchic (no government). Rules, norms, and international organisations help solve collective action problems and make cooperation more likely \u2013 but this requires that powerful states see it as in their interests.',
+  constructivism: 'You understand that identities and interests aren\u2019t fixed \u2013 they\u2019re socially constructed through interaction. What states want changes when ideas about legitimacy and appropriate behaviour shift.',
+  classicalRealism: 'You see human nature \u2013 fear, ambition, the desire for power \u2013 as driving conflict. Politics is tragic because human nature is flawed. The best we can hope for is prudent management of inevitable conflicts.',
+  marxismWorldSystems: 'You see the world economy as hierarchically structured \u2013 core states extracting from the periphery. Global poverty isn\u2019t a bug in the system; it\u2019s how capitalism works, requiring exploitation to function.',
+  feminism: 'You recognise how gender shapes what IR theory treats as important \u2013 who gets to speak, what counts as security, whose labour is valued. You see the invisible work (mostly done by women) that makes \u201Chigh politics\u201D possible.',
+  postcolonial: 'You know the \u201Cinternational system\u201D is a colonial creation that continues to privilege European ways of knowing and being. Concepts like sovereignty, development, and civilisation carry colonial DNA that shapes world politics today.',
+  greenTheory: 'The more-than-human world \u2013 rivers, forests, climate systems \u2013 isn\u2019t just \u201Cenvironment\u201D; it\u2019s political, active, and subject to abrupt shift. You see environmental parameters IR theory mostly ignores as central.',
+  indigenousDecolonial: 'You understand the state system which many IR scholars take for granted, as a fundamental obstacle to First Nations\u2019 self-determination. Decolonisation isn\u2019t a metaphor or about recognition \u2013 it requires Land Back and material transformation.',
+  confucianIR: 'You recognise that power without virtue creates resentment, not order. States exist in relationships where moral authority and proper conduct matter, not just material capabilities.',
+};
 
 // ─── MAIN SCORING FUNCTION ──────────────────────────────────────────────────
 
@@ -1208,7 +1436,7 @@ function generateCalculationReport(answers) {
     steps.forEach(s => ln(`  ${s}`));
   }
 
-  // Neorealism
+  // Structural Realism
   {
     const s = [];
     const v1 = (t.stateStrategic.score / t.stateStrategic.max) * 30;
@@ -1223,7 +1451,7 @@ function generateCalculationReport(answers) {
     if (answers.Q11 === 0) { bonus += 10; s.push('Q11=A (unitary actors) → +10'); }
     if (answers.Q7 === 0) { bonus += 10; s.push('Q7=A (national security) → +10'); }
     if (answers.Q4 === 0) { bonus += 5; s.push('Q4=A (states lens) → +5'); }
-    showTheory('Neorealism', s, v1+v2+v3+v4+bonus);
+    showTheory('Structural Realism', s, v1+v2+v3+v4+bonus);
   }
 
   // Feminism (detailed as requested)
@@ -1295,7 +1523,7 @@ function ProgressBar({ current, total }) {
           display: 'flex',
           justifyContent: 'space-between',
           marginBottom: 8,
-          fontSize: 12,
+          fontSize: 13,
           color: '#94a3b8',
           fontFamily: "'Georgia', serif",
           letterSpacing: '0.04em',
@@ -1336,7 +1564,7 @@ function SchemaTag({ schema, color }) {
       />
       <span
         style={{
-          fontSize: 11,
+          fontSize: 12,
           fontFamily: "'Georgia', serif",
           letterSpacing: '0.12em',
           color: '#64748b',
@@ -1365,7 +1593,7 @@ function TypeBadge({ type }) {
   return (
     <span
       style={{
-        fontSize: 10,
+        fontSize: 11,
         letterSpacing: '0.1em',
         textTransform: 'uppercase',
         fontFamily: 'monospace',
@@ -1419,7 +1647,7 @@ function ForcedChoice({ options, value, onChange }) {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontSize: 12,
+                fontSize: 13,
                 fontWeight: 700,
                 color: selected ? '#fff' : '#64748b',
                 fontFamily: 'monospace',
@@ -1431,7 +1659,7 @@ function ForcedChoice({ options, value, onChange }) {
             </span>
             <span
               style={{
-                fontSize: 15,
+                fontSize: 16,
                 lineHeight: 1.55,
                 color: selected ? '#e2e8f0' : '#94a3b8',
                 fontFamily: "'Georgia', serif",
@@ -1465,7 +1693,7 @@ function LikertScale({ value, onChange, labels }) {
                   : '1px solid rgba(255,255,255,0.1)',
                 background: selected ? '#4A6FA5' : 'rgba(255,255,255,0.04)',
                 cursor: 'pointer',
-                fontSize: 15,
+                fontSize: 16,
                 fontWeight: 700,
                 color: selected ? '#fff' : '#475569',
                 transition: 'all 0.15s ease',
@@ -1482,7 +1710,7 @@ function LikertScale({ value, onChange, labels }) {
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <span
           style={{
-            fontSize: 11,
+            fontSize: 12,
             color: '#475569',
             fontFamily: "'Georgia', serif",
           }}
@@ -1491,7 +1719,7 @@ function LikertScale({ value, onChange, labels }) {
         </span>
         <span
           style={{
-            fontSize: 11,
+            fontSize: 12,
             color: '#475569',
             fontFamily: "'Georgia', serif",
           }}
@@ -1517,7 +1745,7 @@ function RankingInput({ options, value, onChange, maxRank }) {
       {value.length < maxRank && (
         <div
           style={{
-            fontSize: 12,
+            fontSize: 13,
             color: '#475569',
             fontFamily: "'Georgia', serif",
             marginBottom: 4,
@@ -1569,7 +1797,7 @@ function RankingInput({ options, value, onChange, maxRank }) {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontSize: 13,
+                fontSize: 14,
                 fontWeight: 800,
                 color: isSelected ? '#fff' : '#475569',
                 flexShrink: 0,
@@ -1581,7 +1809,7 @@ function RankingInput({ options, value, onChange, maxRank }) {
             </span>
             <span
               style={{
-                fontSize: 15,
+                fontSize: 16,
                 lineHeight: 1.55,
                 color: isSelected ? '#e2e8f0' : '#94a3b8',
                 fontFamily: "'Georgia', serif",
@@ -1598,7 +1826,7 @@ function RankingInput({ options, value, onChange, maxRank }) {
           style={{
             alignSelf: 'flex-start',
             marginTop: 4,
-            fontSize: 11,
+            fontSize: 12,
             color: '#475569',
             background: 'none',
             border: 'none',
@@ -1634,7 +1862,7 @@ function AxisBar({ axisKey, axisData, config, explanation }) {
       >
         <span
           style={{
-            fontSize: 13,
+            fontSize: 14,
             color: '#cbd5e1',
             fontFamily: "'Georgia', serif",
           }}
@@ -1643,7 +1871,7 @@ function AxisBar({ axisKey, axisData, config, explanation }) {
         </span>
         <span
           style={{
-            fontSize: 11,
+            fontSize: 12,
             color: config.schemaColor,
             fontFamily: 'monospace',
           }}
@@ -1655,7 +1883,7 @@ function AxisBar({ axisKey, axisData, config, explanation }) {
       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
         <span
           style={{
-            fontSize: 11,
+            fontSize: 12,
             color: config.schemaColor,
             fontFamily: "'Georgia', serif",
             whiteSpace: 'nowrap',
@@ -1713,7 +1941,7 @@ function AxisBar({ axisKey, axisData, config, explanation }) {
         </div>
         <span
           style={{
-            fontSize: 11,
+            fontSize: 12,
             color: config.schemaColor,
             fontFamily: "'Georgia', serif",
             whiteSpace: 'nowrap',
@@ -1728,7 +1956,7 @@ function AxisBar({ axisKey, axisData, config, explanation }) {
       {explanation && (
         <p
           style={{
-            fontSize: 12,
+            fontSize: 13,
             color: '#64748b',
             fontFamily: "'Georgia', serif",
             lineHeight: 1.6,
@@ -1772,8 +2000,8 @@ function QuadrantGraph({
   // Background grid tint derived from accent
   const gridTint = accentColor + '1a'; // ~10% opacity hex
 
-  const axisLabelStyle = { fill: accentColor, fontSize: 10.5, fontFamily: 'monospace', fontWeight: 600 };
-  const quadText = { fill: labelColor || accentColor, fontSize: 10, fontFamily: "'Georgia', serif", textAnchor: 'middle', opacity: 0.85 };
+  const axisLabelStyle = { fill: accentColor, fontSize: 11.5, fontFamily: 'monospace', fontWeight: 600 };
+  const quadText = { fill: labelColor || accentColor, fontSize: 11, fontFamily: "'Georgia', serif", textAnchor: 'middle', opacity: 0.85 };
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}>
@@ -1823,7 +2051,7 @@ function QuadrantGraph({
           x={dotX + (xNorm > 0.75 ? -12 : 12)}
           y={dotY + (yNorm < 0.25 ? -16 : 18)}
           fill="#e2e8f0"
-          fontSize={11.5}
+          fontSize={12.5}
           fontFamily="monospace"
           fontWeight={600}
           textAnchor={xNorm > 0.75 ? 'end' : 'start'}
@@ -1857,7 +2085,7 @@ function CalculationDebug({ answers }) {
     background: 'rgba(255,255,255,0.04)',
     color: '#94a3b8',
     cursor: 'pointer',
-    fontSize: 12,
+    fontSize: 13,
     fontFamily: 'monospace',
     letterSpacing: '0.04em',
   };
@@ -1880,7 +2108,7 @@ function CalculationDebug({ answers }) {
             background: '#0f172a',
             border: '1px solid rgba(255,255,255,0.08)',
             borderRadius: 8,
-            fontSize: 11,
+            fontSize: 12,
             lineHeight: 1.6,
             color: '#94a3b8',
             fontFamily: 'monospace',
@@ -1900,18 +2128,37 @@ function CalculationDebug({ answers }) {
 function Results({ scoring, answers }) {
   const { progress, axes, subDiagnostics, tags, theories, warningFlags } = scoring;
 
-  // Sort theories by percent descending
-  const sortedTheories = Object.entries(theories)
+  // ─── Tiered theory display logic ───────────────────────────────────────────
+  // 1) Exclude Left-Ecomodernism from the main sorted list; handle it separately
+  // 2) Top match gets full profile reading
+  // 3) Secondary (40-60%) get brief blurbs
+  // 4) Other (30-39%) get name + % only
+  // 5) <30% hidden entirely
+
+  const allTheories = Object.entries(theories)
     .map(([key, t]) => ({ key, ...t }))
-    .filter(t => t.minDisplay == null || t.percent >= t.minDisplay)
     .sort((a, b) => b.percent - a.percent);
 
-  // Top theory color palette
-  const theoryColors = [
-    '#7C4A9E', '#4A6FA5', '#2E7D4F', '#B45309', '#0F766E',
-    '#9333EA', '#6366F1', '#DC2626', '#059669', '#D97706',
-    '#0891B2',
-  ];
+  // Left-Ecomodernism special handling
+  const leftEco = theories.leftEcomodernism;
+  const nonLeftEco = allTheories.filter(t => t.key !== 'leftEcomodernism');
+  const highestNonLeftEco = nonLeftEco[0];
+
+  // Left-Eco only shows when it IS the top or tied-top score AND >= 35%
+  const showLeftEco = leftEco && leftEco.percent >= 35 &&
+    leftEco.percent >= (highestNonLeftEco ? highestNonLeftEco.percent : 0);
+
+  // The "featured" full-profile theory is always the highest NON-Left-Eco theory
+  const topTheory = highestNonLeftEco;
+
+  // Remaining non-Left-Eco theories (excluding the top one)
+  const remaining = nonLeftEco.slice(1);
+  const secondaryMatches = remaining.filter(t => t.percent >= 40 && t.percent <= 60);
+  const otherAffinities = remaining.filter(t => t.percent >= 30 && t.percent < 40);
+
+  // Edge-case flags
+  const noStrongAffinity = !topTheory || topTheory.percent < 30; // no theory above 30%
+  const noneAbove40 = topTheory && topTheory.percent < 40; // top theory below 40% — skip secondary section
 
   // Tag entries sorted by score descending
   const sortedTags = Object.entries(tags)
@@ -1931,10 +2178,10 @@ function Results({ scoring, answers }) {
     <div style={{ color: '#e2e8f0' }}>
       {/* Header */}
       <div style={{ textAlign: 'center', marginBottom: 40 }}>
-        <div style={{ fontSize: 40, marginBottom: 12 }}>🧭</div>
+        <div style={{ fontSize: 41, marginBottom: 12 }}>🧭</div>
         <h2
           style={{
-            fontSize: 26,
+            fontSize: 27,
             fontFamily: "'Georgia', serif",
             fontWeight: 400,
             margin: '0 0 8px',
@@ -1946,7 +2193,7 @@ function Results({ scoring, answers }) {
         <p
           style={{
             color: '#64748b',
-            fontSize: 13,
+            fontSize: 14,
             fontFamily: "'Georgia', serif",
             margin: 0,
           }}
@@ -1955,74 +2202,399 @@ function Results({ scoring, answers }) {
         </p>
       </div>
 
-      {/* Theory Affinities — top section */}
-      <div style={{ marginBottom: 36 }}>
-        <div
-          style={{
-            fontSize: 11,
-            letterSpacing: '0.12em',
-            color: '#94a3b8',
-            textTransform: 'uppercase',
-            fontFamily: 'monospace',
-            marginBottom: 16,
-          }}
-        >
-          Theory Affinities
+      {/* ═══ YOUR THEORETICAL PROFILE ═══ */}
+
+      {/* ─── No strong affinity message (all theories <30%) ─── */}
+      {noStrongAffinity && (
+        <div style={{ marginBottom: 36 }}>
+          <div
+            style={{
+              fontSize: 12,
+              letterSpacing: '0.12em',
+              color: '#94a3b8',
+              textTransform: 'uppercase',
+              fontFamily: 'monospace',
+              marginBottom: 16,
+            }}
+          >
+            Your Theoretical Profile
+          </div>
+          <p
+            style={{
+              fontSize: 15,
+              lineHeight: 1.7,
+              color: '#cbd5e1',
+              fontFamily: "'Georgia', serif",
+            }}
+          >
+            Your responses don&rsquo;t align strongly with any single theoretical tradition. This means you&rsquo;re drawn equally to multiple traditions, or that you&rsquo;re still exploring these ideas. Check back at the end of the course to see if your ideas have changed.
+          </p>
         </div>
-        {sortedTheories.map((t, i) => (
-          <div key={t.key} style={{ marginBottom: 14 }}>
+      )}
+
+      {/* ─── Top Match: Full Profile Reading ─── */}
+      {!noStrongAffinity && topTheory && THEORY_PROFILES[topTheory.key] && (() => {
+        const profile = THEORY_PROFILES[topTheory.key];
+        return (
+          <div style={{ marginBottom: 36 }}>
             <div
               style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                marginBottom: 5,
+                fontSize: 12,
+                letterSpacing: '0.12em',
+                color: '#94a3b8',
+                textTransform: 'uppercase',
+                fontFamily: 'monospace',
+                marginBottom: 20,
               }}
             >
+              Your strongest affinity
+            </div>
+
+            {/* Emoji + Title + Percentage */}
+            <div style={{ marginBottom: 20 }}>
+              <span style={{ fontSize: 32, marginRight: 12 }}>{profile.emoji}</span>
               <span
                 style={{
-                  fontSize: 13,
+                  fontSize: 24,
+                  fontFamily: "'Georgia', serif",
+                  fontWeight: 400,
+                  color: '#f1f5f9',
+                }}
+              >
+                {profile.heading} &mdash; {topTheory.percent}%
+              </span>
+            </div>
+
+            {/* Body paragraphs */}
+            {profile.body.map((para, i) => (
+              <p
+                key={i}
+                style={{
+                  fontSize: 15,
+                  lineHeight: 1.7,
                   color: '#cbd5e1',
                   fontFamily: "'Georgia', serif",
+                  marginBottom: 16,
                 }}
               >
-                {t.label}
-              </span>
-              <span
+                {para}
+              </p>
+            ))}
+
+            {/* Watch out */}
+            {profile.watchOut && (
+              <p
                 style={{
-                  fontSize: 12,
-                  color: '#64748b',
-                  fontFamily: 'monospace',
+                  fontSize: 15,
+                  lineHeight: 1.7,
+                  color: '#fbbf24',
+                  fontFamily: "'Georgia', serif",
+                  marginBottom: 20,
+                  fontStyle: 'italic',
                 }}
               >
-                {t.percent}%
-              </span>
-            </div>
-            <div
-              style={{
-                height: 4,
-                background: '#1e293b',
-                borderRadius: 2,
-              }}
-            >
+                {profile.watchOut}
+              </p>
+            )}
+
+            {/* Theorists you'd vibe with */}
+            {profile.vibeWith && profile.vibeWith.length > 0 && (
+              <div style={{ marginBottom: 16 }}>
+                <div
+                  style={{
+                    fontSize: 14,
+                    fontWeight: 600,
+                    color: '#94a3b8',
+                    fontFamily: "'Georgia', serif",
+                    marginBottom: 8,
+                  }}
+                >
+                  Theorists you&rsquo;d vibe with:
+                </div>
+                <ul style={{ margin: 0, paddingLeft: 20 }}>
+                  {profile.vibeWith.map((t, i) => (
+                    <li
+                      key={i}
+                      style={{
+                        fontSize: 14,
+                        lineHeight: 1.6,
+                        color: '#94a3b8',
+                        fontFamily: "'Georgia', serif",
+                        marginBottom: 4,
+                      }}
+                    >
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Theorists who'd challenge you */}
+            {profile.challengeYou && profile.challengeYou.length > 0 && (
+              <div style={{ marginBottom: 16 }}>
+                <div
+                  style={{
+                    fontSize: 14,
+                    fontWeight: 600,
+                    color: '#94a3b8',
+                    fontFamily: "'Georgia', serif",
+                    marginBottom: 8,
+                  }}
+                >
+                  Theorists who&rsquo;d challenge you:
+                </div>
+                <ul style={{ margin: 0, paddingLeft: 20 }}>
+                  {profile.challengeYou.map((t, i) => (
+                    <li
+                      key={i}
+                      style={{
+                        fontSize: 14,
+                        lineHeight: 1.6,
+                        color: '#94a3b8',
+                        fontFamily: "'Georgia', serif",
+                        marginBottom: 4,
+                      }}
+                    >
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Quote */}
+            {profile.quote && (
               <div
                 style={{
-                  height: '100%',
-                  width: `${t.percent}%`,
-                  background: theoryColors[i % theoryColors.length],
-                  borderRadius: 2,
-                  transition: 'width 0.6s ease',
+                  borderLeft: '3px solid #4A6FA5',
+                  paddingLeft: 16,
+                  marginTop: 20,
+                  marginBottom: 8,
                 }}
-              />
+              >
+                <p
+                  style={{
+                    fontSize: 14,
+                    fontStyle: 'italic',
+                    color: '#94a3b8',
+                    fontFamily: "'Georgia', serif",
+                    margin: '0 0 4px',
+                    lineHeight: 1.6,
+                  }}
+                >
+                  &ldquo;{profile.quote.text}&rdquo;
+                </p>
+                <p
+                  style={{
+                    fontSize: 13,
+                    color: '#64748b',
+                    fontFamily: "'Georgia', serif",
+                    margin: 0,
+                  }}
+                >
+                  &mdash; {profile.quote.attribution}
+                </p>
+              </div>
+            )}
+          </div>
+        );
+      })()}
+
+      {/* ─── Left-Ecomodernism (shown second, only when it's the top score) ─── */}
+      {!noStrongAffinity && showLeftEco && THEORY_PROFILES.leftEcomodernism && (() => {
+        const profile = THEORY_PROFILES.leftEcomodernism;
+        return (
+          <div style={{ marginBottom: 36 }}>
+            <div
+              style={{
+                borderTop: '1px solid #334155',
+                paddingTop: 24,
+                marginTop: 8,
+              }}
+            >
+              {/* Emoji + Title + Percentage */}
+              <div style={{ marginBottom: 20 }}>
+                <span style={{ fontSize: 32, marginRight: 12 }}>{profile.emoji}</span>
+                <span
+                  style={{
+                    fontSize: 24,
+                    fontFamily: "'Georgia', serif",
+                    fontWeight: 400,
+                    color: '#f1f5f9',
+                  }}
+                >
+                  {profile.heading} &mdash; {leftEco.percent}%
+                </span>
+              </div>
+
+              {/* Body paragraphs */}
+              {profile.body.map((para, i) => (
+                <p
+                  key={i}
+                  style={{
+                    fontSize: 15,
+                    lineHeight: 1.7,
+                    color: '#cbd5e1',
+                    fontFamily: "'Georgia', serif",
+                    marginBottom: 16,
+                  }}
+                >
+                  {para}
+                </p>
+              ))}
+
+              {/* Watch out */}
+              {profile.watchOut && (
+                <p
+                  style={{
+                    fontSize: 15,
+                    lineHeight: 1.7,
+                    color: '#fbbf24',
+                    fontFamily: "'Georgia', serif",
+                    marginBottom: 20,
+                    fontStyle: 'italic',
+                  }}
+                >
+                  {profile.watchOut}
+                </p>
+              )}
+
+              {/* Theorists you'd vibe with */}
+              {profile.vibeWith && profile.vibeWith.length > 0 && (
+                <div style={{ marginBottom: 16 }}>
+                  <div
+                    style={{
+                      fontSize: 14,
+                      fontWeight: 600,
+                      color: '#94a3b8',
+                      fontFamily: "'Georgia', serif",
+                      marginBottom: 8,
+                    }}
+                  >
+                    Theorists you&rsquo;d vibe with:
+                  </div>
+                  <ul style={{ margin: 0, paddingLeft: 20 }}>
+                    {profile.vibeWith.map((t, i) => (
+                      <li
+                        key={i}
+                        style={{
+                          fontSize: 14,
+                          lineHeight: 1.6,
+                          color: '#94a3b8',
+                          fontFamily: "'Georgia', serif",
+                          marginBottom: 4,
+                        }}
+                      >
+                        {t}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
-        ))}
-      </div>
+        );
+      })()}
+
+      {/* ─── Secondary Matches (40-60%): brief blurbs (skip if top theory <40%) ─── */}
+      {!noStrongAffinity && !noneAbove40 && secondaryMatches.length > 0 && (
+        <div style={{ marginBottom: 36 }}>
+          <div
+            style={{
+              borderTop: '1px solid #334155',
+              paddingTop: 24,
+              marginBottom: 20,
+            }}
+          >
+            <div
+              style={{
+                fontSize: 12,
+                letterSpacing: '0.12em',
+                color: '#94a3b8',
+                textTransform: 'uppercase',
+                fontFamily: 'monospace',
+                marginBottom: 16,
+              }}
+            >
+              You also resonate with
+            </div>
+            {secondaryMatches.map((t) => (
+              <div key={t.key} style={{ marginBottom: 20 }}>
+                <div
+                  style={{
+                    fontSize: 16,
+                    fontFamily: "'Georgia', serif",
+                    fontWeight: 400,
+                    color: '#f1f5f9',
+                    marginBottom: 6,
+                  }}
+                >
+                  {t.label} ({t.percent}%)
+                </div>
+                {THEORY_BLURBS[t.key] && (
+                  <p
+                    style={{
+                      fontSize: 14,
+                      lineHeight: 1.6,
+                      color: '#94a3b8',
+                      fontFamily: "'Georgia', serif",
+                      margin: 0,
+                    }}
+                  >
+                    {THEORY_BLURBS[t.key]}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* ─── Other Affinities (30-39%): name + % only ─── */}
+      {!noStrongAffinity && otherAffinities.length > 0 && (
+        <div style={{ marginBottom: 36 }}>
+          <div
+            style={{
+              borderTop: '1px solid #334155',
+              paddingTop: 24,
+              marginBottom: 16,
+            }}
+          >
+            <div
+              style={{
+                fontSize: 12,
+                letterSpacing: '0.12em',
+                color: '#94a3b8',
+                textTransform: 'uppercase',
+                fontFamily: 'monospace',
+                marginBottom: 12,
+              }}
+            >
+              Other affinities
+            </div>
+            {otherAffinities.map((t) => (
+              <div
+                key={t.key}
+                style={{
+                  fontSize: 14,
+                  fontFamily: "'Georgia', serif",
+                  color: '#64748b',
+                  marginBottom: 6,
+                }}
+              >
+                {t.label} ({t.percent}%)
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Schema 1 Axes */}
       <div style={{ marginBottom: 32 }}>
         <div
           style={{
-            fontSize: 11,
+            fontSize: 12,
             letterSpacing: '0.12em',
             color: '#4A6FA5',
             textTransform: 'uppercase',
@@ -2070,7 +2642,7 @@ function Results({ scoring, answers }) {
       <div style={{ marginBottom: 32 }}>
         <div
           style={{
-            fontSize: 11,
+            fontSize: 12,
             letterSpacing: '0.12em',
             color: '#2E7D4F',
             textTransform: 'uppercase',
@@ -2118,7 +2690,7 @@ function Results({ scoring, answers }) {
       <div style={{ marginBottom: 32 }}>
         <div
           style={{
-            fontSize: 11,
+            fontSize: 12,
             letterSpacing: '0.12em',
             color: '#94a3b8',
             textTransform: 'uppercase',
@@ -2145,7 +2717,7 @@ function Results({ scoring, answers }) {
               >
                 <span
                   style={{
-                    fontSize: 13,
+                    fontSize: 14,
                     color: '#cbd5e1',
                     fontFamily: "'Georgia', serif",
                   }}
@@ -2154,7 +2726,7 @@ function Results({ scoring, answers }) {
                 </span>
                 <span
                   style={{
-                    fontSize: 11,
+                    fontSize: 12,
                     color: '#64748b',
                     fontFamily: 'monospace',
                   }}
@@ -2194,7 +2766,7 @@ function Results({ scoring, answers }) {
           >
             <span
               style={{
-                fontSize: 13,
+                fontSize: 14,
                 color: '#cbd5e1',
                 fontFamily: "'Georgia', serif",
               }}
@@ -2203,7 +2775,7 @@ function Results({ scoring, answers }) {
             </span>
             <span
               style={{
-                fontSize: 12,
+                fontSize: 13,
                 color: subDiagnostics.sovereignty.label ? '#94a3b8' : '#334155',
                 fontFamily: 'monospace',
               }}
@@ -2219,7 +2791,7 @@ function Results({ scoring, answers }) {
         <div style={{ marginBottom: 32 }}>
           <div
             style={{
-              fontSize: 11,
+              fontSize: 12,
               letterSpacing: '0.12em',
               color: '#94a3b8',
               textTransform: 'uppercase',
@@ -2229,7 +2801,7 @@ function Results({ scoring, answers }) {
           >
             Discussion Points
           </div>
-          <p style={{ fontSize: 14, color: '#94a3b8', marginBottom: 16, fontFamily: "'Georgia', serif" }}>
+          <p style={{ fontSize: 15, color: '#94a3b8', marginBottom: 16, fontFamily: "'Georgia', serif" }}>
             Some of your responses might benefit from further reflection:
           </p>
           {warningFlags.map((flag, i) => (
@@ -2243,7 +2815,7 @@ function Results({ scoring, answers }) {
                 marginBottom: 8,
               }}
             >
-              <span style={{ fontSize: 13, color: '#fbbf24', fontFamily: "'Georgia', serif" }}>
+              <span style={{ fontSize: 14, color: '#fbbf24', fontFamily: "'Georgia', serif" }}>
                 {flag.flag}
               </span>
             </div>
@@ -2255,7 +2827,7 @@ function Results({ scoring, answers }) {
       <div style={{ marginBottom: 32 }}>
         <div
           style={{
-            fontSize: 11,
+            fontSize: 12,
             letterSpacing: '0.12em',
             color: '#94a3b8',
             textTransform: 'uppercase',
@@ -2270,7 +2842,7 @@ function Results({ scoring, answers }) {
             <span
               key={tag.key}
               style={{
-                fontSize: 12,
+                fontSize: 13,
                 padding: '5px 12px',
                 borderRadius: 20,
                 border: tag.score > 0
@@ -2297,7 +2869,7 @@ function Results({ scoring, answers }) {
             border: '1px solid rgba(74,111,165,0.25)',
             borderRadius: 8,
             padding: '16px 18px',
-            fontSize: 13,
+            fontSize: 14,
             color: '#64748b',
             fontFamily: "'Georgia', serif",
             lineHeight: 1.6,
@@ -2378,10 +2950,10 @@ export default function IRCompass() {
         <div style={{ width: '100%', maxWidth: 660 }}>
           {/* Title */}
           <div style={{ textAlign: 'center', marginBottom: 48 }}>
-            <div style={{ fontSize: 52, marginBottom: 16 }}>🧭</div>
+            <div style={{ fontSize: 53, marginBottom: 16 }}>🧭</div>
             <h1
               style={{
-                fontSize: 32,
+                fontSize: 33,
                 fontWeight: 400,
                 fontFamily: "'Georgia', serif",
                 color: '#f1f5f9',
@@ -2393,7 +2965,7 @@ export default function IRCompass() {
             </h1>
             <p
               style={{
-                fontSize: 15,
+                fontSize: 16,
                 color: '#94a3b8',
                 lineHeight: 1.6,
                 margin: 0,
@@ -2411,7 +2983,7 @@ export default function IRCompass() {
               onClick={() => setShowLanding(false)}
               style={{
                 padding: '16px 48px',
-                fontSize: 17,
+                fontSize: 18,
                 fontFamily: "'Georgia', serif",
                 fontWeight: 600,
                 color: '#fff',
@@ -2448,7 +3020,7 @@ export default function IRCompass() {
           <div style={{ marginBottom: 36 }}>
             <h2
               style={{
-                fontSize: 16,
+                fontSize: 17,
                 fontWeight: 400,
                 fontFamily: "'Georgia', serif",
                 color: '#cbd5e1',
@@ -2460,7 +3032,7 @@ export default function IRCompass() {
             </h2>
             <p
               style={{
-                fontSize: 14,
+                fontSize: 15,
                 color: '#94a3b8',
                 lineHeight: 1.7,
                 margin: '0 0 14px',
@@ -2472,7 +3044,7 @@ export default function IRCompass() {
             </p>
             <p
               style={{
-                fontSize: 14,
+                fontSize: 15,
                 color: '#94a3b8',
                 lineHeight: 1.7,
                 margin: '0 0 14px',
@@ -2486,7 +3058,7 @@ export default function IRCompass() {
             </p>
             <p
               style={{
-                fontSize: 14,
+                fontSize: 15,
                 color: '#94a3b8',
                 lineHeight: 1.7,
                 margin: 0,
@@ -2504,7 +3076,7 @@ export default function IRCompass() {
           <div style={{ marginBottom: 36 }}>
             <h2
               style={{
-                fontSize: 16,
+                fontSize: 17,
                 fontWeight: 400,
                 fontFamily: "'Georgia', serif",
                 color: '#cbd5e1',
@@ -2516,7 +3088,7 @@ export default function IRCompass() {
             </h2>
             <p
               style={{
-                fontSize: 14,
+                fontSize: 15,
                 color: '#94a3b8',
                 lineHeight: 1.7,
                 margin: 0,
@@ -2531,7 +3103,7 @@ export default function IRCompass() {
           <div style={{ marginBottom: 48 }}>
             <h2
               style={{
-                fontSize: 16,
+                fontSize: 17,
                 fontWeight: 400,
                 fontFamily: "'Georgia', serif",
                 color: '#cbd5e1',
@@ -2543,7 +3115,7 @@ export default function IRCompass() {
             </h2>
             <p
               style={{
-                fontSize: 14,
+                fontSize: 15,
                 color: '#94a3b8',
                 lineHeight: 1.7,
                 margin: 0,
@@ -2581,7 +3153,7 @@ export default function IRCompass() {
               border: 'none',
               color: '#475569',
               cursor: 'pointer',
-              fontSize: 13,
+              fontSize: 14,
               fontFamily: "'Georgia', serif",
               marginBottom: 32,
               padding: 0,
@@ -2633,7 +3205,7 @@ export default function IRCompass() {
         >
           <span
             style={{
-              fontSize: 13,
+              fontSize: 14,
               fontFamily: 'monospace',
               color: '#475569',
               letterSpacing: '0.05em',
@@ -2642,7 +3214,7 @@ export default function IRCompass() {
             🧭 IR THEORY COMPASS
           </span>
           <span
-            style={{ fontSize: 11, color: '#334155', fontFamily: 'monospace' }}
+            style={{ fontSize: 12, color: '#334155', fontFamily: 'monospace' }}
           >
             {answeredCount}/{QUESTIONS.length} answered
           </span>
@@ -2684,7 +3256,7 @@ export default function IRCompass() {
           {/* Question ID */}
           <div
             style={{
-              fontSize: 11,
+              fontSize: 12,
               fontFamily: 'monospace',
               color: '#334155',
               letterSpacing: '0.1em',
@@ -2697,7 +3269,7 @@ export default function IRCompass() {
           {/* Question text */}
           <h2
             style={{
-              fontSize: 20,
+              fontSize: 21,
               fontWeight: 400,
               lineHeight: 1.45,
               margin: '0 0 10px',
@@ -2711,7 +3283,7 @@ export default function IRCompass() {
           {q.detail && (
             <p
               style={{
-                fontSize: 14,
+                fontSize: 15,
                 color: '#64748b',
                 lineHeight: 1.6,
                 margin: '0 0 20px',
@@ -2724,7 +3296,7 @@ export default function IRCompass() {
           {q.note && (
             <p
               style={{
-                fontSize: 13,
+                fontSize: 14,
                 color: '#475569',
                 lineHeight: 1.6,
                 margin: '0 0 20px',
@@ -2738,7 +3310,7 @@ export default function IRCompass() {
           {/* Instruction */}
           <div
             style={{
-              fontSize: 12,
+              fontSize: 13,
               color: q.schemaColor,
               fontFamily: 'monospace',
               letterSpacing: '0.06em',
@@ -2801,7 +3373,7 @@ export default function IRCompass() {
                 background: 'rgba(255,255,255,0.04)',
                 color: '#64748b',
                 cursor: 'pointer',
-                fontSize: 14,
+                fontSize: 15,
                 fontFamily: "'Georgia', serif",
               }}
             >
@@ -2823,7 +3395,7 @@ export default function IRCompass() {
               border: 'none',
               color: isAnswered() ? '#fff' : '#334155',
               cursor: isAnswered() ? 'pointer' : 'not-allowed',
-              fontSize: 14,
+              fontSize: 15,
               fontFamily: "'Georgia', serif",
               transition: 'all 0.2s ease',
               fontWeight: isAnswered() ? 600 : 400,
@@ -2841,7 +3413,7 @@ export default function IRCompass() {
                 border: 'none',
                 color: '#334155',
                 cursor: 'pointer',
-                fontSize: 11,
+                fontSize: 12,
                 fontFamily: "'Georgia', serif",
               }}
             >
