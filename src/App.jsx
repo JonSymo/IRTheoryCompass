@@ -3038,7 +3038,7 @@ export default function IRCompass() {
                 margin: '0 0 14px',
               }}
             >
-              Developed by Jon Symons and colleagues in the School of
+              Developed by Jon Symons with assistance from Govand Khalid Azeez and colleagues in the School of
               International Studies at Macquarie University for POIR2030 and
               other units. Design and vibecoding utilised Claude by Anthropic.
             </p>
