@@ -2686,8 +2686,8 @@ function Results({ scoring, answers }) {
         />
       </div>
 
-      {/* Sub-Diagnostics */}
-      <div style={{ marginBottom: 32 }}>
+      {/* Sub-Diagnostics — hidden from display */}
+      {false && <div style={{ marginBottom: 32 }}>
         <div
           style={{
             fontSize: 12,
@@ -2784,10 +2784,10 @@ function Results({ scoring, answers }) {
             </span>
           </div>
         </div>
-      </div>
+      </div>}
 
-      {/* Discussion Points (Warning Flags) */}
-      {warningFlags && warningFlags.length > 0 && (
+      {/* Discussion Points (Warning Flags) — hidden from display */}
+      {false && warningFlags && warningFlags.length > 0 && (
         <div style={{ marginBottom: 32 }}>
           <div
             style={{
