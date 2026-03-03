@@ -170,8 +170,7 @@ const QUESTIONS = [
       'External military threats are the main danger states face; human security is primarily a domestic policy question',
       'Patriarchal assumptions about what counts as "security" structure world politics',
       'Foreign policy is dominated by corporate interests who benefit from militarisation',
-      'The territorial state system defines states as defence units, not welfare providers',
-      'The premise is wrong — most states do prioritise human security and development',
+      'The premise is wrong \u2014 most states do prioritise human security and development',
     ],
   },
   {
@@ -373,7 +372,7 @@ const Q18_RT_VALUES = { 0: -2, 1: -3, 2: -2, 3: 3, 4: 3, 5: 2 };
 const Q2_EPIST_VALUES = { 0: -2, 1: -1, 2: 2 };
 const Q3_EPIST_VALUES = { 0: -2, 1: 3, 2: 1 };
 const Q1_HISTORICITY_VALUES = { 0: 2, 1: 0, 2: 2, 3: -1, 4: 1 };
-const Q12_FEMINIST_VALUES = { 0: 0, 1: 2, 2: 0, 3: 0, 4: 0 };
+const Q12_FEMINIST_VALUES = { 0: 0, 1: 2, 2: 0, 3: 0 };
 const Q13_FEMINIST_VALUES = { 0: 1, 1: 2, 2: 3, 3: 0, 4: -1 };
 // Q17_SOVEREIGNTY_LABELS — removed (Q17 intervention question deleted)
 const Q2_AUTHORITY_VALUES = { 0: -2, 1: -1, 2: 3 };
