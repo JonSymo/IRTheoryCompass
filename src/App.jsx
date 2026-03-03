@@ -1472,7 +1472,7 @@ function generateExportJSON(answers) {
 
 function generateResultsPDF(answers) {
   const scoring = computeScoring(answers);
-  const { axes, tags, theories } = scoring;
+  const { axes, subDiagnostics, tags, theories } = scoring;
 
   const doc = new jsPDF();
   const pageWidth = doc.internal.pageSize.getWidth();
@@ -1753,6 +1753,63 @@ function generateResultsPDF(answers) {
       doc.text(t.label + ':  ' + t.score + '/' + t.max, margin + 5, y);
       y += 6;
     });
+  }
+
+  // ── Feminist IR Awareness (only if score ≥ 2) ──
+  if (subDiagnostics.feministIR && subDiagnostics.feministIR.score >= 2) {
+    const femScore = subDiagnostics.feministIR.score;
+    const femCategory = femScore <= 3 ? 'Moderate awareness' : 'Strong feminist lens';
+    const femExplanation = femScore <= 3
+      ? 'You notice some gendered dynamics in international politics and see that concepts like "security" and "development" aren\'t gender-neutral.'
+      : 'You consistently centre gender in your analysis. You ask "where are the women?" and recognise how patriarchy shapes what IR theory treats as important.';
+
+    addRule();
+    checkPage(40);
+    doc.setFontSize(11);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(120);
+    doc.text('ADDITIONAL INSIGHTS', margin, y);
+    doc.setTextColor(0);
+    y += 8;
+
+    doc.setFontSize(11);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Feminist IR Awareness: ' + femCategory + ' (' + femScore + '/5)', margin + 5, y);
+    y += 7;
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(10);
+    const introLines = doc.splitTextToSize(
+      'This measures whether you recognise how gender shapes international politics \u2014 not just whether Feminism is your top theory. You can be a realist who sees gender dynamics or a liberal who ignores them.',
+      textWidth - 10
+    );
+    introLines.forEach(line => {
+      checkPage(6);
+      doc.text(line, margin + 5, y);
+      y += 5;
+    });
+    y += 3;
+
+    const explLines = doc.splitTextToSize('Your score of ' + femScore + '/5 means: ' + femExplanation, textWidth - 10);
+    explLines.forEach(line => {
+      checkPage(6);
+      doc.text(line, margin + 5, y);
+      y += 5;
+    });
+    y += 3;
+
+    doc.setFontSize(9);
+    doc.setTextColor(120);
+    const noteLines = doc.splitTextToSize(
+      'Note: Some people score lower on feminist questions because they find the specific options provided here somewhat inadequate \u2014 feminist IR is a diverse field with many perspectives.',
+      textWidth - 10
+    );
+    noteLines.forEach(line => {
+      checkPage(5);
+      doc.text(line, margin + 5, y);
+      y += 4.5;
+    });
+    doc.setTextColor(0);
   }
 
   // ── Add final page number ──
@@ -2852,6 +2909,89 @@ function Results({ scoring, answers }) {
           </div>
         </div>
       )}
+
+      {/* ─── Additional Insights: Feminist IR Awareness (only if score ≥ 2) ─── */}
+      {subDiagnostics.feministIR && subDiagnostics.feministIR.score >= 2 && (() => {
+        const femScore = subDiagnostics.feministIR.score;
+        const femCategory = femScore <= 3 ? 'Moderate awareness' : 'Strong feminist lens';
+        const femExplanation = femScore <= 3
+          ? 'You notice some gendered dynamics in international politics and see that concepts like \u201Csecurity\u201D and \u201Cdevelopment\u201D aren\u2019t gender-neutral.'
+          : 'You consistently centre gender in your analysis. You ask \u201Cwhere are the women?\u201D and recognise how patriarchy shapes what IR theory treats as important.';
+        return (
+          <div style={{ marginBottom: 36 }}>
+            <div
+              style={{
+                borderTop: '1px solid #334155',
+                paddingTop: 24,
+                marginBottom: 16,
+              }}
+            >
+              <div
+                style={{
+                  fontSize: 12,
+                  letterSpacing: '0.12em',
+                  color: '#94a3b8',
+                  textTransform: 'uppercase',
+                  fontFamily: 'monospace',
+                  marginBottom: 16,
+                }}
+              >
+                Additional Insights
+              </div>
+
+              <div style={{ marginBottom: 8 }}>
+                <span
+                  style={{
+                    fontSize: 18,
+                    fontFamily: "'Georgia', serif",
+                    fontWeight: 400,
+                    color: '#f1f5f9',
+                  }}
+                >
+                  {'\u2640\uFE0F'} Feminist IR Awareness: {femCategory} ({femScore}/5)
+                </span>
+              </div>
+
+              <p
+                style={{
+                  fontSize: 14,
+                  lineHeight: 1.6,
+                  color: '#94a3b8',
+                  fontFamily: "'Georgia', serif",
+                  marginBottom: 12,
+                }}
+              >
+                This measures whether you recognise how gender shapes international politics &mdash; not just whether Feminism is your top theory. You can be a realist who sees gender dynamics or a liberal who ignores them.
+              </p>
+
+              <p
+                style={{
+                  fontSize: 14,
+                  lineHeight: 1.6,
+                  color: '#cbd5e1',
+                  fontFamily: "'Georgia', serif",
+                  marginBottom: 12,
+                }}
+              >
+                Your score of {femScore}/5 means: {femExplanation}
+              </p>
+
+              <p
+                style={{
+                  fontSize: 13,
+                  lineHeight: 1.5,
+                  color: '#64748b',
+                  fontFamily: "'Georgia', serif",
+                  fontStyle: 'italic',
+                  margin: 0,
+                }}
+              >
+                Note: Some people score lower on feminist questions because they find the specific options provided here somewhat inadequate &mdash; feminist IR is a diverse field with many perspectives.
+              </p>
+            </div>
+          </div>
+        );
+      })()}
 
       {/* Schema 1 Axes */}
       <div style={{ marginBottom: 32 }}>
