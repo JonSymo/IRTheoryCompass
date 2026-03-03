@@ -1469,6 +1469,19 @@ function generateExportJSON(answers) {
 
 // ─── PDF GENERATION ─────────────────────────────────────────────────────────
 
+const PDF_SAFE_NAMES = {
+  'Ol\u00FAf\u1EB9\u0301mi T\u00E1\u00EDw\u00F2': 'Olufemi Taiwo',
+  'T\u00E1\u00EDw\u00F2': 'Taiwo',
+};
+
+function sanitizeForPDF(text) {
+  let result = text;
+  for (const [unicode, safe] of Object.entries(PDF_SAFE_NAMES)) {
+    result = result.replaceAll(unicode, safe);
+  }
+  return result;
+}
+
 function generateResultsPDF(answers) {
   const scoring = computeScoring(answers);
   const { axes, subDiagnostics, tags, theories } = scoring;
@@ -1503,6 +1516,7 @@ function generateResultsPDF(answers) {
 
   // ── Helper: add wrapped text and advance y ──
   function addWrapped(text, fontSize, style, indent) {
+    text = sanitizeForPDF(text);
     indent = indent || 0;
     doc.setFontSize(fontSize);
     doc.setFont('helvetica', style || 'normal');
@@ -2412,12 +2426,24 @@ function CalculationDebug({ answers }) {
         <button onClick={handlePDF} style={btnStyle}>
           Download Results (PDF)
         </button>
-        <button onClick={handleExport} style={btnStyle}>
-          Export Calculation Details (JSON)
-        </button>
         <button onClick={() => setExpanded(e => !e)} style={btnStyle}>
           {expanded ? '▾ Hide' : '▸ Show'} Calculation Breakdown
         </button>
+      </div>
+      <div style={{ marginTop: 10 }}>
+        <span
+          onClick={handleExport}
+          style={{
+            fontSize: 12,
+            color: '#64748b',
+            cursor: 'pointer',
+            fontFamily: "'Georgia', serif",
+            textDecoration: 'underline',
+            textUnderlineOffset: '3px',
+          }}
+        >
+          For technical users: View raw scoring data (JSON)
+        </span>
       </div>
       {expanded && (
         <pre
