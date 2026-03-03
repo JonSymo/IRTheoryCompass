@@ -1,4 +1,5 @@
 import { useState, useMemo, useRef } from 'react';
+import jsPDF from 'jspdf';
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 const QUESTIONS = [
@@ -1506,6 +1507,300 @@ function generateExportJSON(answers) {
   }, null, 2);
 }
 
+// ─── PDF GENERATION ─────────────────────────────────────────────────────────
+
+function generateResultsPDF(answers) {
+  const scoring = computeScoring(answers);
+  const { axes, tags, theories } = scoring;
+
+  const doc = new jsPDF();
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const pageHeight = doc.internal.pageSize.getHeight();
+  const margin = 20;
+  const textWidth = pageWidth - margin * 2;
+  let y = margin;
+  let pageNum = 1;
+
+  // ── Helper: check for page break ──
+  function checkPage(needed) {
+    if (y + needed > pageHeight - 25) {
+      addPageNumber();
+      doc.addPage();
+      pageNum++;
+      y = margin;
+    }
+  }
+
+  // ── Helper: add page number footer ──
+  function addPageNumber() {
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(150);
+    doc.text(`Page ${pageNum}`, pageWidth - margin, pageHeight - 10, { align: 'right' });
+    doc.text('IR Theory Compass \u2014 worldpoliticscompass.com', margin, pageHeight - 10);
+    doc.setTextColor(0);
+  }
+
+  // ── Helper: add wrapped text and advance y ──
+  function addWrapped(text, fontSize, style, indent) {
+    indent = indent || 0;
+    doc.setFontSize(fontSize);
+    doc.setFont('helvetica', style || 'normal');
+    const lines = doc.splitTextToSize(text, textWidth - indent);
+    for (let i = 0; i < lines.length; i++) {
+      checkPage(fontSize * 0.5);
+      doc.text(lines[i], margin + indent, y);
+      y += fontSize * 0.45;
+    }
+    y += 2;
+  }
+
+  // ── Helper: horizontal rule ──
+  function addRule() {
+    checkPage(8);
+    doc.setDrawColor(200);
+    doc.line(margin, y, pageWidth - margin, y);
+    y += 8;
+  }
+
+  // ── Compute tiered display (same logic as Results component) ──
+  const allTheories = Object.entries(theories)
+    .map(([key, t]) => ({ key, ...t }))
+    .sort((a, b) => b.percent - a.percent);
+
+  const leftEco = theories.leftEcomodernism;
+  const nonLeftEco = allTheories.filter(t => t.key !== 'leftEcomodernism');
+  const highestNonLeftEco = nonLeftEco[0];
+
+  const showLeftEco = leftEco && leftEco.percent >= 35 &&
+    leftEco.percent >= (highestNonLeftEco ? highestNonLeftEco.percent : 0);
+
+  const topTheory = highestNonLeftEco;
+  const remaining = nonLeftEco.slice(1);
+  const secondaryMatches = remaining.filter(t => t.percent >= 40 && t.percent <= 60);
+  const otherAffinities = remaining.filter(t => t.percent >= 30 && t.percent < 40);
+  const noStrongAffinity = !topTheory || topTheory.percent < 30;
+  const noneAbove40 = topTheory && topTheory.percent < 40;
+
+  // ═══════════════════════════════════════════════════════════════
+  // PAGE CONTENT
+  // ═══════════════════════════════════════════════════════════════
+
+  // ── Header ──
+  doc.setFontSize(20);
+  doc.setFont('helvetica', 'bold');
+  doc.text('IR Theory Compass Results', margin, y);
+  y += 8;
+  doc.setFontSize(10);
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor(120);
+  doc.text('Generated: ' + new Date().toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' }), margin, y);
+  doc.setTextColor(0);
+  y += 12;
+  addRule();
+
+  // ── No strong affinity message ──
+  if (noStrongAffinity) {
+    addWrapped(
+      'Your responses don\u2019t align strongly with any single theoretical tradition. ' +
+      'This means you\u2019re drawn equally to multiple traditions, or that you\u2019re still exploring these ideas. ' +
+      'Check back at the end of the course to see if your ideas have changed.',
+      11, 'normal'
+    );
+    y += 6;
+  }
+
+  // ── Helper: render a full theory profile to PDF ──
+  function renderProfile(theoryKey, percent) {
+    const profile = THEORY_PROFILES[theoryKey];
+    if (!profile) return;
+
+    // Heading
+    checkPage(14);
+    doc.setFontSize(16);
+    doc.setFont('helvetica', 'bold');
+    doc.text(profile.heading + ' \u2014 ' + percent + '%', margin, y);
+    y += 10;
+
+    // Body paragraphs
+    profile.body.forEach(para => {
+      addWrapped(para, 11, 'normal');
+      y += 2;
+    });
+
+    // Watch out
+    if (profile.watchOut) {
+      y += 2;
+      addWrapped(profile.watchOut, 11, 'italic');
+      y += 2;
+    }
+
+    // Theorists you'd vibe with
+    if (profile.vibeWith && profile.vibeWith.length > 0) {
+      checkPage(10);
+      doc.setFontSize(12);
+      doc.setFont('helvetica', 'bold');
+      doc.text('Theorists you\u2019d vibe with:', margin, y);
+      y += 7;
+      profile.vibeWith.forEach(t => {
+        addWrapped('\u2022 ' + t, 10, 'normal', 5);
+      });
+      y += 2;
+    }
+
+    // Theorists who'd challenge you
+    if (profile.challengeYou && profile.challengeYou.length > 0) {
+      checkPage(10);
+      doc.setFontSize(12);
+      doc.setFont('helvetica', 'bold');
+      doc.text('Theorists who\u2019d challenge you:', margin, y);
+      y += 7;
+      profile.challengeYou.forEach(t => {
+        addWrapped('\u2022 ' + t, 10, 'normal', 5);
+      });
+      y += 2;
+    }
+
+    // Quote
+    if (profile.quote) {
+      checkPage(14);
+      y += 2;
+      addWrapped('\u201C' + profile.quote.text + '\u201D', 10, 'italic', 10);
+      doc.setFontSize(9);
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(120);
+      doc.text('\u2014 ' + profile.quote.attribution, margin + 10, y);
+      doc.setTextColor(0);
+      y += 8;
+    }
+  }
+
+  // ── Top Theory Match ──
+  if (!noStrongAffinity && topTheory && THEORY_PROFILES[topTheory.key]) {
+    doc.setFontSize(11);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(120);
+    doc.text('YOUR STRONGEST AFFINITY', margin, y);
+    doc.setTextColor(0);
+    y += 8;
+
+    renderProfile(topTheory.key, topTheory.percent);
+  }
+
+  // ── Left-Ecomodernism (shown second when it's the top score) ──
+  if (!noStrongAffinity && showLeftEco && THEORY_PROFILES.leftEcomodernism) {
+    addRule();
+    renderProfile('leftEcomodernism', leftEco.percent);
+  }
+
+  // ── Secondary Matches (40-60%) ──
+  if (!noStrongAffinity && !noneAbove40 && secondaryMatches.length > 0) {
+    addRule();
+    checkPage(12);
+    doc.setFontSize(11);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(120);
+    doc.text('YOU ALSO RESONATE WITH', margin, y);
+    doc.setTextColor(0);
+    y += 8;
+
+    secondaryMatches.forEach(t => {
+      checkPage(16);
+      doc.setFontSize(12);
+      doc.setFont('helvetica', 'bold');
+      doc.text(t.label + ' (' + t.percent + '%)', margin, y);
+      y += 7;
+      if (THEORY_BLURBS[t.key]) {
+        addWrapped(THEORY_BLURBS[t.key], 10, 'normal', 0);
+        y += 3;
+      }
+    });
+  }
+
+  // ── Other Affinities (30-39%) ──
+  if (!noStrongAffinity && otherAffinities.length > 0) {
+    addRule();
+    checkPage(12);
+    doc.setFontSize(11);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(120);
+    doc.text('OTHER AFFINITIES', margin, y);
+    doc.setTextColor(0);
+    y += 8;
+
+    otherAffinities.forEach(t => {
+      checkPage(7);
+      doc.setFontSize(11);
+      doc.setFont('helvetica', 'normal');
+      doc.text(t.label + ' (' + t.percent + '%)', margin + 5, y);
+      y += 6;
+    });
+    y += 2;
+  }
+
+  // ── Axes Scores ──
+  addRule();
+  checkPage(12);
+  doc.setFontSize(11);
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor(120);
+  doc.text('AXES SCORES', margin, y);
+  doc.setTextColor(0);
+  y += 8;
+
+  const axisEntries = [
+    { key: 'materialIdeational', label: 'Material \u2190 \u2192 Ideational' },
+    { key: 'structureAgency', label: 'Structure \u2190 \u2192 Agency' },
+    { key: 'immediateStructural', label: 'Immediate \u2190 \u2192 Structural' },
+    { key: 'reformTransform', label: 'Reform \u2190 \u2192 Transform' },
+  ];
+
+  axisEntries.forEach(({ key, label }) => {
+    const ax = axes[key];
+    if (!ax) return;
+    checkPage(7);
+    doc.setFontSize(11);
+    doc.setFont('helvetica', 'bold');
+    doc.text(label + ':', margin + 5, y);
+    doc.setFont('helvetica', 'normal');
+    const scoreStr = (ax.score > 0 ? '+' : '') + ax.score + '  (' + ax.category + ')';
+    doc.text(scoreStr, margin + 85, y);
+    y += 7;
+  });
+  y += 4;
+
+  // ── Active Tags (score >= 2) ──
+  const activeTags = Object.entries(tags)
+    .map(([key, t]) => ({ key, ...t }))
+    .filter(t => t.score >= 2)
+    .sort((a, b) => b.score - a.score);
+
+  if (activeTags.length > 0) {
+    addRule();
+    checkPage(12);
+    doc.setFontSize(11);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(120);
+    doc.text('ACTIVE DIAGNOSTIC TAGS', margin, y);
+    doc.setTextColor(0);
+    y += 8;
+
+    activeTags.forEach(t => {
+      checkPage(7);
+      doc.setFontSize(10);
+      doc.setFont('helvetica', 'normal');
+      doc.text(t.label + ':  ' + t.score + '/' + t.max, margin + 5, y);
+      y += 6;
+    });
+  }
+
+  // ── Add final page number ──
+  addPageNumber();
+
+  // ── Save ──
+  doc.save('ir-theory-compass-results-' + new Date().toISOString().slice(0, 10) + '.pdf');
+}
+
 // ─── HELPERS ────────────────────────────────────────────────────────────────
 
 function getOptionLabel(index) {
@@ -2078,6 +2373,10 @@ function CalculationDebug({ answers }) {
     URL.revokeObjectURL(url);
   };
 
+  const handlePDF = () => {
+    generateResultsPDF(answers);
+  };
+
   const btnStyle = {
     padding: '10px 18px',
     borderRadius: 8,
@@ -2093,8 +2392,11 @@ function CalculationDebug({ answers }) {
   return (
     <div style={{ marginTop: 32 }}>
       <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+        <button onClick={handlePDF} style={btnStyle}>
+          Download Results (PDF)
+        </button>
         <button onClick={handleExport} style={btnStyle}>
-          ↓ Export Calculation Details (JSON)
+          Export Calculation Details (JSON)
         </button>
         <button onClick={() => setExpanded(e => !e)} style={btnStyle}>
           {expanded ? '▾ Hide' : '▸ Show'} Calculation Breakdown
