@@ -1081,17 +1081,16 @@ const THEORY_PROFILES = {
     quote: null,
   },
   leftEcomodernism: {
-    emoji: '\u{1F331}',
+    emoji: '\u{1F331}\u26A1',
     heading: 'Left-Ecomodernism / Ecosocialism',
     body: [
-      'Psst\u2026 don\u2019t tell anyone we said this, a political compass is supposed to be neutral. But your answers on climate and capitalism are objectively correct. You see what too many people miss: capitalism won\u2019t solve climate change, but we also can\u2019t meet the needs of 8 billion people and save the planet by rejecting technology.',
-      'You believe technological progress and public investment in green infrastructure are necessary to address climate change, but you also recognise that capitalism itself is a deeper problem. You\u2019re not a techno-optimist who thinks markets will save us, but you\u2019re also not a primitivist who thinks humanity should abandon advanced technology. Your position: transition away from capitalism and use all our technological capacities to meet human needs while respecting planetary boundaries. Amen.',
+      'Psst\u2026 don\u2019t tell anyone we said this, a political compass is supposed to be neutral. But your answers on climate and capitalism were our favourites. You see what too many people miss: capitalist markets won\u2019t magically solve climate change, but we also can\u2019t meet the needs of 8 billion people and save the planet by rejecting technology.',
+      'You believe technological progress and public investment in green infrastructure are necessary to address climate change, but you also recognise that capitalism itself is a deeper problem. You\u2019re not a techno-optimist who thinks markets will save us, but you\u2019re also not a primitivist who thinks humanity should abandon advanced technology. Your likely position: transition away from capitalism and use all our technological capacities to meet human needs while respecting planetary boundaries. Amen.',
     ],
     watchOut: 'Watch out for: This is a hard position to hold without contradictions.',
     vibeWith: [
       'Matt Huber \u2013 Climate change is class war',
-      'Leigh Phillips \u2013 Large-scale planning is actually possible (see: Walmart, but socialist)',
-      'Aaron Bastani \u2013 Fully automated luxury communism isn\u2019t just a meme, it\u2019s a program',
+      'Holly Jean Buck \u2013 Technology: acknowledge both its harms and its potential',
     ],
     challengeYou: [],
     quote: null,
