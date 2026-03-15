@@ -3439,49 +3439,6 @@ export default function IRCompass() {
             </p>
           </div>
 
-          {/* Copyright Notice */}
-          <div
-            style={{
-              textAlign: 'center',
-              marginBottom: 32,
-              paddingTop: 20,
-              borderTop: '1px solid rgba(148, 163, 184, 0.2)',
-            }}
-          >
-            <p
-              style={{
-                fontSize: 13,
-                color: '#64748b',
-                lineHeight: 1.8,
-                fontFamily: "'Georgia', serif",
-                margin: 0,
-              }}
-            >
-              Content {'\u00A9'} Macquarie University 2026<br />
-              Licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0<br />
-              <br />
-              Developed by Dr. Jon Symons and colleagues at Macquarie University<br />
-              Implementation assisted by Claude (Anthropic)<br />
-              <br />
-              You are free to use, adapt, and share this tool for educational purposes.<br />
-              Attribution required. Non-commercial use only.<br />
-              <br />
-              Full license:{' '}
-              <a
-                href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  color: '#64748b',
-                  textDecoration: 'underline',
-                  textUnderlineOffset: '3px',
-                }}
-              >
-                creativecommons.org/licenses/by-nc-sa/4.0/
-              </a>
-            </p>
-          </div>
-
           {/* Start Button — prominent position */}
           <div style={{ textAlign: 'center', marginBottom: 40 }}>
             <button
@@ -3628,6 +3585,49 @@ export default function IRCompass() {
             >
               This compass is in pilot form. If you encounter issues or have
               feedback, please email jonathan.symons [at] mq.edu.au
+            </p>
+          </div>
+
+          {/* Copyright Notice */}
+          <div
+            style={{
+              textAlign: 'center',
+              marginBottom: 32,
+              paddingTop: 20,
+              borderTop: '1px solid rgba(148, 163, 184, 0.2)',
+            }}
+          >
+            <p
+              style={{
+                fontSize: 13,
+                color: '#64748b',
+                lineHeight: 1.8,
+                fontFamily: "'Georgia', serif",
+                margin: 0,
+              }}
+            >
+              Content {'\u00A9'} Macquarie University 2026<br />
+              Licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0<br />
+              <br />
+              Developed by Dr. Jon Symons and colleagues at Macquarie University<br />
+              Implementation assisted by Claude (Anthropic)<br />
+              <br />
+              You are free to use, adapt, and share this tool for educational purposes.<br />
+              Attribution required. Non-commercial use only.<br />
+              <br />
+              Full license:{' '}
+              <a
+                href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  color: '#64748b',
+                  textDecoration: 'underline',
+                  textUnderlineOffset: '3px',
+                }}
+              >
+                creativecommons.org/licenses/by-nc-sa/4.0/
+              </a>
             </p>
           </div>
 
