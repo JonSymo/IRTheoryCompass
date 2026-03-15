@@ -891,12 +891,12 @@ const THEORY_PROFILES = {
     emoji: '\u{1F3B1}',
     heading: 'Structural Realism',
     body: [
-      'Structural realists have often been the least popular scholars in the International Relations theory zodiac (mind you, practically everyone in government calls themselves a \u201Crealist\u201D). No-one makes friends with cold, calculating analysis, or by rejecting liberal moralism. Recently though, John Mearsheimer\u2019s lectures on Ukraine/NATO have accumulated Kardashian-level YouTube views \u2013 so things might be looking up for Realists.',
-      'Neorealists lean toward pessimism and love to prudently assess risks, especially of using military force. Their greatest scorn is for the strategic naivety of liberal imperialists who think American power can remake the world for the better. While others dream about cooperation and shared norms, or promise humanitarian interventions to liberate the oppressed, neorealists think only of the sober pursuit of interests. They see international law and institutions surviving only so long as they serve the interests of the powerful. Realists have a long record of condemning unlawful US military action (Iran, Iraq, Vietnam etc). But they reject these \u2018wars of choice\u2019 because they are counterproductive, not because they are wrong.',
+      'Structural realists have often been the least popular scholars in the International Relations theory zodiac (mind you, practically everyone in government calls themselves a \u201Crealist\u201D). No-one makes friends with cold, rationalist analysis, or by rejecting liberal moralism. Recently though, John Mearsheimer\u2019s commnetary on Ukraine/NATO and Iran have accumulated Kardashian-level YouTube views \u2013 so things might be looking up for Realists.',
+      'Structural realists lean toward pessimism and love to prudently assess risks, especially of using military force. Their greatest scorn is for liberal imperialists who think American power can remake the world for the better. While others dream about cooperation and shared norms, or promise \u2018humanitarian interventions\u2018, neorealists think only of the sober pursuit of interests. They see international law and institutions surviving only so long as they serve the interests of the powerful. Realists have a long record of condemning unlawful US military action (Iran, Iraq, Vietnam etc). But they reject these \u2018wars of choice\u2019 because they are counterproductive, not because they are wrong.',
     ],
-    watchOut: 'Watch out that your tragic disposition doesn\u2019t mean you fail to see possibilities for change. Sometimes progress is possible even when the structure says no.',
+    watchOut: 'Watch out that your structural pessimism doesn\u2019t mean you fail to see possibilities for change. Sometimes progress is possible even when the structure says no.',
     vibeWith: [
-      'Kenneth Waltz \u2013 Made structure the star of IR theory and didn\u2019t apologise for it (we read him in Week 4)',
+      'Kenneth Waltz \u2013 Made structure the focus of IR theory and didn\u2019t apologise for it (we read him in Week 4)',
       'John Mearsheimer \u2013 Says great powers lie, cheat, and steal because the system makes them',
     ],
     challengeYou: [
@@ -909,8 +909,8 @@ const THEORY_PROFILES = {
     emoji: '\u2696\uFE0F',
     heading: 'Liberal Institutionalism',
     body: [
-      'John Lennon was thinking of you when he wrote: Imagine all the people, living life in peace? You may be a dreamer, but you\u2019re not the only one. Liberals are natural optimists who reckon everything\u2019s going to come up Milhouse. They also dominated Western public discourse up until \u2013 roughly \u2013 the election of Trump in 2016.',
-      'Whereas Realists see a world of competition and power, liberals see states slowly building the architecture of cooperation \u2013 treaties, trade agreements, international courts, climate accords. You think institutions work by creating common knowledge, making commitments credible, and allowing states to coordinate. When others kvetch about a world in disarray, you probably find yourself defending the UN\u2019s achievements, or pointing out that the World Trade Organisation has prevented trade wars and global recession.',
+      'John Lennon was thinking of you when he wrote: Imagine all the people, living life in peace? You may be a dreamer, but you\u2019re not the only one. Liberals are natural optimists who reckon everything\u2019s going to come up Milhouse. They also dominated Western institutions and public discourse up until \u2013 roughly \u2013 the election of Trump in 2016.',
+      'Whereas Realists see a world of competition and power, liberals see states slowly building the architecture of cooperation \u2013 treaties, trade agreements, international courts, climate accords. You think institutions work by creating common knowledge, making commitments credible, and allowing states to coordinate. When others fret over a world in disarray, you probably find yourself defending the UN\u2019s achievements, or pointing out that the World Trade Organization has prevented trade wars and global recession.',
     ],
     watchOut: 'Watch out for: Sometimes \u201Cthe rules-based international order\u201D is just a polite way of saying \u201CUS-led\u201D. Keohane called this \u201Ccooperation under hegemony\u201D for a reason. If your liberal values have you supporting the use of force to \u2018liberate\u2019 oppressed people, take a beat to assess whose interests you\u2019re advancing.',
     vibeWith: [
@@ -949,7 +949,7 @@ const THEORY_PROFILES = {
     heading: 'Classical Realism',
     body: [
       'Classical realists are the historians of the IR zodiac. While their neorealist cousins model the abstract structure of world politics like pool players calculating angles, classical realists seek patterns in historical experience, and reflect on the limited space for moral action amid the tragic dilemmas of political life.',
-      'You think humans are fundamentally flawed \u2013 driven by fear, ambition, and the desire for power. This doesn\u2019t make you a nihilist; it makes you a pessimist who thinks clearly about what politics can achieve. You think actions should be judged primarily by their consequences. Hans Morgenthau said it best: \u201CTo know with despair that the political act is inevitably evil, and to act nevertheless, is moral courage. To choose among several expedient actions the least evil one is moral judgment.\u201D',
+      'You think humans are fundamentally flawed \u2013 driven by fear, ambition, and the desire for power. This doesn\u2019t make you a nihilist; it makes you a pessimist who focused on the limits of what politics can achieve. You think actions should be judged primarily by their consequences. Hans Morgenthau said it best: \u201CTo know with despair that the political act is inevitably evil, and to act nevertheless, is moral courage. To choose among several expedient actions the least evil one is moral judgment.\u201D',
     ],
     watchOut: 'Watch out for: Remember Hannah Arendt\u2019s warning: \u201Cthose who choose the lesser evil forget very quickly that they chose evil.\u201D',
     vibeWith: [
@@ -969,19 +969,21 @@ const THEORY_PROFILES = {
     emoji: '\u{1F6A9}',
     heading: 'Marxism / World Systems',
     body: [
-      'You are Katniss Everdeen in the Hunger Games. You see how the Capitol (the West) exploits the Districts (the Global South), and you\u2019re ready to join the resistance.',
-      'You have no time for realists (servants of state power), constructivists or liberals (servants of self-serving bourgeois morality). Instead, you see the warp and weft of history \u2013 how changing methods of production shape class formations, and how the ideologies people believe in grow from material conditions. Your disdain for bourgeois ideology is captured in Rosa Luxemburg\u2019s statement \u201CThe most revolutionary thing one can do is always to proclaim loudly what is happening.\u201D',
+      'You are Katniss Everdeen in the Hunger Games. You see how the technologically advanced Capitol (the West) exploits the Districts (the Global South), and you\u2019re ready to join the resistance.',
+      'You have no time for realists (servants of state power), constructivists or liberals (servants of self-serving bourgeois liberal ideas). Instead, you see the deeper patterns of history \u2013 how changing methods of production and acquiring our basic needs shape class formations. Your disdain for bourgeois ideology grows out of Marx\u2019s warning that \u201Cthe ideas of the ruling class are in every epoch the ruling ideas\u201D',
       'You know global poverty isn\u2019t a development problem to be solved \u2013 it\u2019s how capitalism works \u2013 extracting cheap labour and resources from the South. You think the state system organises and legitimates this exploitation. And so you\u2019ve figured human equality requires that working people seize the means of production, and (if you\u2019re a classic Marxist) allow the state to wither away.',
     ],
     watchOut: 'Watch out for: You\u2019ve seen the totality. Be careful that others don\u2019t mistake your holistic analysis for dogma; or think your focus on class conflict blinds you to other forms of injustice, like racism and sexism.',
     vibeWith: [
+      'Karl Marx \u2013 Argues capital must nestle everywhere, settle everywhere, establish connections everywhere',
       'Robert Cox \u2013 Asked \u201Cfor whom, for what purpose?\u201D and made Gramscian hegemony central to IR (we read him in Week 5)',
       'Rosa Luxemburg \u2013 Wrote about imperialism and capital accumulation',
-      'Immanuel Wallerstein \u2013 Mapped the world-system: core, periphery, semi-periphery',
-      'Silvia Federici \u2013 Shows capitalism requires women\u2019s unpaid reproductive labour',
+      'Samir Amin and Immanuel Wallerstein \u2013 Mapped the world-system: core, periphery, semi-periphery',
+      'Mao \u2013 Imperialists are paper tigers',
     ],
     challengeYou: [
       'Kenneth Waltz \u2013 \u201CStates, not classes, are the units that matter\u201D',
+      'Kathryn Sikkink \u2013 Would argue that norms and ideas have an independent influence on state behaviour',
     ],
     quote: null,
   },
@@ -989,8 +991,8 @@ const THEORY_PROFILES = {
     emoji: '\u{1F4AA}',
     heading: 'Feminism',
     body: [
-      'Feminist scholars like Jan Pettman call IR a \u201Cmasculinist discipline\u201D \u2013 masculinist in \u201Cits personnel and in how it understands states, wars, and markets\u201D. You ask challenging questions like: where are the women? What kinds of masculinities and femininities allow the world to function? How does patriarchy intersect with colonialism, race, and class?',
-      'Women may not have been in the war rooms making decisions, but they were doing the background work that makes \u2018high politics\u2019 possible. They were not writing the laws of war, but they were living with the consequences of patriarchal violence.',
+      'Feminist scholars like Jan Pettman call IR a \u201Cmasculinist discipline\u201D \u2013 masculinist in \u201Cits personnel and in how it understands states, wars, and markets\u201D. You ask unsettling questions like: What kinds of masculinities and femininities make the world to function? How does patriarchy intersect with colonialism, race, and class?',
+      'Women may not have been in the war rooms making decisions, but they were doing the labour that makes \u2018high politics\u2019 possible: the care work, food production, education, and emotional labour that sustains societies falls disproportionately on women. They were not writing the laws of war, but they were living with the consequences of patriarchal violence.',
       'You see gender everywhere because it is everywhere. You think IR theory is most masculinist when it\u2019s pretending to be neutral, because that\u2019s when it\u2019s obscuring women\u2019s perspectives and experiences most completely. You make the invisible visible \u2013 and the establishment resents you because it\u2019s uncomfortable.',
     ],
     watchOut: 'Watch out for: \u201CWomen\u201D isn\u2019t a unified category. It\u2019s fractured by race, class, geography, colonialism. Liberal feminism that wants more women CEOs isn\u2019t the same as feminism that wants to dismantle capitalism and patriarchy together.',
@@ -1001,7 +1003,7 @@ const THEORY_PROFILES = {
     ],
     challengeYou: [
       'Aileen Moreton-Robinson\u2019s \u201CTalkin\u2019 Up to the White Woman\u201D (2021) will challenge you to think about the inadvertent complicity of many white feminists in racial oppression',
-      'John Mearsheimer, Kenneth Waltz etc \u2013 Write as though gender is irrelevant to power politics',
+      'John Mearsheimer, Kenneth Waltz etc \u2013 Structural theories might imply gender is irrelevant to power politics',
     ],
     quote: { text: '\u2018Womenandchildren\u2019 is not a description of reality but a political move.', attribution: 'Cynthia Enloe' },
   },
@@ -1010,7 +1012,7 @@ const THEORY_PROFILES = {
     heading: 'Postcolonial Theory',
     body: [
       'Postcolonial scholars believe the \u201Cinternational system\u201D isn\u2019t universal or neutral \u2013 it was built through colonialism and still operates through colonial logics. When others talk about \u201Cfailed states\u201D and \u201Cdevelopment,\u201D you hear echoes of the colonial \u201Ccivilising mission.\u201D You know that concepts IR theory takes for granted \u2013 sovereignty, progress, civilisation, even \u201Cinternational\u201D itself \u2013 carry colonial DNA.',
-      'Postcolonial theory has taken different forms. Frantz Fanon wrote about colonial violence \u2013 both physical and psychological \u2013 and the necessity of liberation. Edward Said showed how Western \u201Cknowledge\u201D about the non-West was a technology of power. Gayatri Spivak shows how Western philosophy required the figure of the colonised \u2018native informant\u2019 \u2013 someone who could be known but never truly speak \u2013 to construct European rationality itself. She also critiqued colonial logic (\u2018white men saving brown women from brown men\u2019) and white feminism\u2019s complicity in it. Contemporary scholars like Ol\u00FAf\u1EB9\u0301mi T\u00E1\u00EDw\u00F2 push postcolonial thought toward reparative politics: not just diagnosing colonial harm, but building alternatives.',
+      'Postcolonial theory has taken different forms. Frantz Fanon wrote about colonial violence \u2013 both physical and psychological \u2013 and the necessity of radical liberationist movements. Edward Said showed how Western \u201Cknowledge\u201D about the non-West was a technology of power that objectifies and demonises the East. Gayatri Spivak shows how Western philosophy required the figure of the colonised \u2018native informant\u2019 \u2013 someone who could be known but never truly speak \u2013 to construct European rationality itself. She also critiqued colonial logic (\u2018white men saving brown women from brown men\u2019) and white feminism\u2019s complicity in it. Contemporary scholars like Ol\u00FAf\u1EB9\u0301mi T\u00E1\u00EDw\u00F2 push postcolonial thought toward reparative politics: not just diagnosing colonial harm, but building alternatives.',
     ],
     watchOut: 'Watch out for: Don\u2019t let critique substitute for construction. As T\u00E1\u00EDw\u00F2 argues, we need to move from exposing what\u2019s wrong to articulating what reparative justice actually requires.',
     vibeWith: [
@@ -1048,7 +1050,7 @@ const THEORY_PROFILES = {
     body: [
       'Indigenous and decolonial scholars don\u2019t just critique IR theory \u2013 they reveal that the entire discipline is implicated in erasing Indigenous peoples and their political systems. The \u201Cstate system\u201D isn\u2019t a natural, universal value-free system; it\u2019s a technology of dispossession that has been violently imposed on much of the world.',
       'For First Nations peoples, the most central questions are often the ones that mainstream IR theory ignores.',
-      'You know that borders are violence. Sovereignty is a colonial concept. When liberals talk about reforming institutions, you\u2019re asking: why are we accepting the state as the unit of analysis at all? Indigenous peoples had governance before colonisation, and continue to practise and develop their political systems.',
+      'You know that borders are violence. Sovereignty is a colonial concept. When liberals talk about reforming institutions, you\u2019re asking: why are we accepting the state as the unit of analysis at all? Indigenous peoples had governance before colonisation, and continue to practise and develop their political systems. Aileen Moreton-Robinson\u2019s concept of the \u2018white possessive\u2019 shows how white sovereignty includes knowledge systems that naturalise Indigenous dispossession by treating white ownership of land, institutions and knowledge as simply the natural order of things.',
     ],
     watchOut: 'Watch out for: As Eve Tuck and K Wayne Yang warn in \u201CDecolonisation is not a Metaphor\u201D, the radicalism of decolonial ideas is lost when decolonisation becomes a metaphor (e.g. people who want to \u201Cdecolonise education\u201D). Decolonisation means the repatriation of First Nations\u2019 land and life.',
     vibeWith: [
@@ -1103,7 +1105,7 @@ const THEORY_BLURBS = {
   liberalInstitutionalism: 'You recognise that states cooperate through institutions even if the world is anarchic (no government). Rules, norms, and international organisations help solve collective action problems and make cooperation more likely \u2013 but this requires that powerful states see it as in their interests.',
   constructivism: 'You understand that identities and interests aren\u2019t fixed \u2013 they\u2019re socially constructed through interaction. What states want changes when ideas about legitimacy and appropriate behaviour shift.',
   classicalRealism: 'You see human nature \u2013 fear, ambition, the desire for power \u2013 as driving conflict. Politics is tragic because human nature is flawed. The best we can hope for is prudent management of inevitable conflicts.',
-  marxismWorldSystems: 'You see the world economy as hierarchically structured \u2013 core states extracting from the periphery. Global poverty isn\u2019t a bug in the system; it\u2019s how capitalism works, requiring exploitation to function.',
+  marxismWorldSystems: 'You see the world economy as hierarchically structured by class and hegemonic states \u2013 core states, an instrument of bourgeois classes, extracting from the periphery and the working class. Global poverty isn\u2019t a bug in the system; it\u2019s how capitalism works, requiring exploitation and oppression to function.',
   feminism: 'You recognise how gender shapes what IR theory treats as important \u2013 who gets to speak, what counts as security, whose labour is valued. You see the invisible work (mostly done by women) that makes \u201Chigh politics\u201D possible.',
   postcolonial: 'You know the \u201Cinternational system\u201D is a colonial creation that continues to privilege European ways of knowing and being. Concepts like sovereignty, development, and civilisation carry colonial DNA that shapes world politics today.',
   greenTheory: 'The more-than-human world \u2013 rivers, forests, climate systems \u2013 isn\u2019t just \u201Cenvironment\u201D; it\u2019s political, active, and subject to abrupt shift. You see environmental parameters IR theory mostly ignores as central.',
@@ -1584,7 +1586,7 @@ function generateResultsPDF(answers) {
   }
 
   // ── Helper: render a full theory profile to PDF ──
-  function renderProfile(theoryKey, percent) {
+  function renderProfile(theoryKey) {
     const profile = THEORY_PROFILES[theoryKey];
     if (!profile) return;
 
@@ -1592,7 +1594,7 @@ function generateResultsPDF(answers) {
     checkPage(14);
     doc.setFontSize(16);
     doc.setFont('helvetica', 'bold');
-    doc.text(profile.heading + ' \u2014 ' + percent + '%', margin, y);
+    doc.text(profile.heading, margin, y);
     y += 10;
 
     // Body paragraphs
@@ -1657,13 +1659,13 @@ function generateResultsPDF(answers) {
     doc.setTextColor(0);
     y += 8;
 
-    renderProfile(topTheory.key, topTheory.percent);
+    renderProfile(topTheory.key);
   }
 
   // ── Left-Ecomodernism (shown second when it's the top score) ──
   if (!noStrongAffinity && showLeftEco && THEORY_PROFILES.leftEcomodernism) {
     addRule();
-    renderProfile('leftEcomodernism', leftEco.percent);
+    renderProfile('leftEcomodernism');
   }
 
   // ── Secondary Matches (40-60%) ──
@@ -1681,7 +1683,7 @@ function generateResultsPDF(answers) {
       checkPage(16);
       doc.setFontSize(12);
       doc.setFont('helvetica', 'bold');
-      doc.text(t.label + ' (' + t.percent + '%)', margin, y);
+      doc.text(t.label, margin, y);
       y += 7;
       if (THEORY_BLURBS[t.key]) {
         addWrapped(THEORY_BLURBS[t.key], 10, 'normal', 0);
@@ -1705,7 +1707,7 @@ function generateResultsPDF(answers) {
       checkPage(7);
       doc.setFontSize(11);
       doc.setFont('helvetica', 'normal');
-      doc.text(t.label + ' (' + t.percent + '%)', margin + 5, y);
+      doc.text(t.label, margin + 5, y);
       y += 6;
     });
     y += 2;
@@ -2469,6 +2471,35 @@ function CalculationDebug({ answers }) {
   );
 }
 
+function CopyrightFooter() {
+  return (
+    <div
+      style={{
+        borderTop: '1px solid rgba(148, 163, 184, 0.15)',
+        marginTop: 48,
+        paddingTop: 16,
+        paddingBottom: 16,
+        textAlign: 'center',
+        fontSize: 12,
+        color: '#64748b',
+        fontFamily: "'Georgia', serif",
+        lineHeight: 1.6,
+      }}
+    >
+      {'\u00A9'} 2026 Macquarie University |{' '}
+      <a
+        href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ color: '#64748b', textDecoration: 'underline', textUnderlineOffset: '2px' }}
+      >
+        CC BY-NC-SA 4.0
+      </a>{' '}
+      | Developed by Jon Symons et al.
+    </div>
+  );
+}
+
 function Results({ scoring, answers }) {
   const { progress, axes, subDiagnostics, tags, theories, warningFlags } = scoring;
 
@@ -2503,6 +2534,14 @@ function Results({ scoring, answers }) {
   // Edge-case flags
   const noStrongAffinity = !topTheory || topTheory.percent < 30; // no theory above 30%
   const noneAbove40 = topTheory && topTheory.percent < 40; // top theory below 40% — skip secondary section
+
+  // Close-match contextual message logic
+  const second = nonLeftEco[1];
+  const third = nonLeftEco[2];
+  const closeTop2 = topTheory && second && (topTheory.percent - second.percent) <= 15;
+  const multipleStrong = topTheory && topTheory.percent >= 60 &&
+    second && second.percent >= 60 && third && third.percent >= 60;
+  const showContextMessage = closeTop2 || multipleStrong;
 
   // Tag entries sorted by score descending
   const sortedTags = Object.entries(tags)
@@ -2591,7 +2630,7 @@ function Results({ scoring, answers }) {
                 marginBottom: 20,
               }}
             >
-              Your strongest affinity
+              {'\uD83E\uDDED'} Your strongest affinity
             </div>
 
             {/* Emoji + Title + Percentage */}
@@ -2605,9 +2644,34 @@ function Results({ scoring, answers }) {
                   color: '#f1f5f9',
                 }}
               >
-                {profile.heading} &mdash; {topTheory.percent}%
+                {profile.heading}
               </span>
             </div>
+
+            {/* Contextual close-match message */}
+            {showContextMessage && (() => {
+              let msg = 'Most scholars draw on multiple traditions. Your answers also strongly reflected ' + second.label;
+              if (third && third.percent >= 40) msg += ' and ' + third.label;
+              msg += '.';
+              return (
+                <p
+                  style={{
+                    fontSize: 14,
+                    lineHeight: 1.6,
+                    color: '#94a3b8',
+                    fontFamily: "'Georgia', serif",
+                    fontStyle: 'italic',
+                    marginBottom: 16,
+                    padding: '10px 14px',
+                    background: 'rgba(148, 163, 184, 0.08)',
+                    borderRadius: 8,
+                    borderLeft: '3px solid #4A6FA5',
+                  }}
+                >
+                  {msg}
+                </p>
+              );
+            })()}
 
             {/* Body paragraphs */}
             {profile.body.map((para, i) => (
@@ -2768,7 +2832,7 @@ function Results({ scoring, answers }) {
                     color: '#f1f5f9',
                   }}
                 >
-                  {profile.heading} &mdash; {leftEco.percent}%
+                  {profile.heading}
                 </span>
               </div>
 
@@ -2874,7 +2938,7 @@ function Results({ scoring, answers }) {
                     marginBottom: 6,
                   }}
                 >
-                  {t.label} ({t.percent}%)
+                  {t.label}
                 </div>
                 {THEORY_BLURBS[t.key] && (
                   <p
@@ -2927,7 +2991,7 @@ function Results({ scoring, answers }) {
                   marginBottom: 6,
                 }}
               >
-                {t.label} ({t.percent}%)
+                {t.label}
               </div>
             ))}
           </div>
@@ -3375,6 +3439,49 @@ export default function IRCompass() {
             </p>
           </div>
 
+          {/* Copyright Notice */}
+          <div
+            style={{
+              textAlign: 'center',
+              marginBottom: 32,
+              paddingTop: 20,
+              borderTop: '1px solid rgba(148, 163, 184, 0.2)',
+            }}
+          >
+            <p
+              style={{
+                fontSize: 13,
+                color: '#64748b',
+                lineHeight: 1.8,
+                fontFamily: "'Georgia', serif",
+                margin: 0,
+              }}
+            >
+              Content {'\u00A9'} Macquarie University 2026<br />
+              Licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0<br />
+              <br />
+              Developed by Dr. Jon Symons and colleagues at Macquarie University<br />
+              Implementation assisted by Claude (Anthropic)<br />
+              <br />
+              You are free to use, adapt, and share this tool for educational purposes.<br />
+              Attribution required. Non-commercial use only.<br />
+              <br />
+              Full license:{' '}
+              <a
+                href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  color: '#64748b',
+                  textDecoration: 'underline',
+                  textUnderlineOffset: '3px',
+                }}
+              >
+                creativecommons.org/licenses/by-nc-sa/4.0/
+              </a>
+            </p>
+          </div>
+
           {/* Start Button — prominent position */}
           <div style={{ textAlign: 'center', marginBottom: 40 }}>
             <button
@@ -3524,6 +3631,8 @@ export default function IRCompass() {
             </p>
           </div>
 
+          <CopyrightFooter />
+
         </div>
       </div>
     );
@@ -3563,6 +3672,7 @@ export default function IRCompass() {
             ← Start over
           </button>
           <Results scoring={scoring} answers={answers} />
+          <CopyrightFooter />
         </div>
       </div>
     );
@@ -3743,6 +3853,11 @@ export default function IRCompass() {
             />
           )}
         </div>
+      </div>
+
+      {/* Copyright footer */}
+      <div style={{ padding: '0 20px 80px', maxWidth: 620, width: '100%', margin: '0 auto' }}>
+        <CopyrightFooter />
       </div>
 
       {/* Footer nav */}
